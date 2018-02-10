@@ -17,7 +17,7 @@ public class PersonEntity extends BaseEntity{
                         .createStatement()
                         .executeQuery(sql);
                 while (resultSet.next()) {
-                    Person region = new Person()
+                    Person person = new Person()
                             .setId(resultSet.getInt("id"))
                             .setFirstName(resultSet.getString("first_name"))
                             .setLastNameP(resultSet.getString("last_name_p"))
@@ -29,7 +29,7 @@ public class PersonEntity extends BaseEntity{
                             .setEmail(resultSet.getString("email"))
                             .setCreateDate(resultSet.getDate("create_date"))
                             .setModifyDate(resultSet.getDate("modify_create"));
-                    people.add(region);
+                    people.add(person);
                 }
                 return people;
 
@@ -102,8 +102,8 @@ public class PersonEntity extends BaseEntity{
         return 0;
     }
 
-    public Person (String firstName, String lastNameP, String lastNameM, String gender, String country, String province,
-                   String phone_number, String email, Date create_date, Date modifiy_date) {
+    public Person create (String firstName, String lastNameP, String lastNameM, String gender, String country, String province,
+                   String phone_number, String email, Date createDate, Date modifiyDate) {
         if(findByFirstName(firstName) == null && findByLastNameP(lastNameP) == null && findByLastNameM(lastNameM)==null) {
             if(getConnection() != null) {
                 String sql = "INSERT INTO people(" +
@@ -112,16 +112,17 @@ public class PersonEntity extends BaseEntity{
                         "create_date,modify_date) " +
                         "VALUES(" +
                         String.valueOf(getMaxId() + 1) + ", '" +
-                        firstName +","+lastNameP+","+lastNameM+ "')";
+                        firstName+"' , '"+lastNameP+"' , '"+lastNameM+"' , "+
+                        gender+"' , '"+country+"' , '"+province+"' , '"+phone_number+"' , '"+email+"' , "+
+                        createDate+", "+modifiyDate+")";
                 int results = updateByCriteria(sql);
                 if(results > 0) {
-                    Person person = new Person(getMaxId(), firstName, lastNameP, lastNameM);
+                    Person person = new Person(getMaxId(), firstName, lastNameP, lastNameM, gender, country, province,
+                            phone_number, email, createDate, modifiyDate );
                     return person;
                 }
             }
         }
         return null;
     }
-
-
 }

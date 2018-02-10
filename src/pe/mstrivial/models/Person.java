@@ -15,12 +15,11 @@ public class Person {
     private Date createDate;
     private Date modifyDate;
 
-    public Person (){
+    public Person(int maxId, String firstName, String lastNameP, String lastNameM, String gender, String country, String province, String phone_number, String email, Date createDate, Date modifiyDate){
 
     }
 
-    public Person (int id, String firstName, String lastNameP, String lastNameM, String gender, String country,
-                   String province, String phoneNumber, String email, Date createDate, Date modifyDate){
+    public Person(int id, String firstName, String lastNameP, String lastNameM){
         this.id= id;
         this.firstName= firstName;
         this.lastNameP= lastNameP;
@@ -32,6 +31,10 @@ public class Person {
         this.email= email;
         this.createDate= createDate;
         this.modifyDate= modifyDate;
+    }
+
+    public Person() {
+
     }
 
     public int getId() {
