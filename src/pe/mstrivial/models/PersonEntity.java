@@ -19,13 +19,13 @@ public class PersonEntity extends BaseEntity{
                 while (resultSet.next()) {
                     Person person = new Person()
                             .setId(resultSet.getInt("id"))
-                            .setId(resultSet.getInt("id_company"))
+                            .setCompanyId(resultSet.getInt("id_company"))
                             .setFirstName(resultSet.getString("first_name"))
                             .setLastNameP(resultSet.getString("last_name_p"))
                             .setLastNameM(resultSet.getString("last_name_m"))
                             .setEmail(resultSet.getString("email"))
-                            .setEmail(resultSet.getString("username"))
-                            .setEmail(resultSet.getString("password"))
+                            .setUsername(resultSet.getString("username"))
+                            .setPassword(resultSet.getString("password"))
                             .setCreateDate(resultSet.getDate("create_date"))
                             .setModifyDate(resultSet.getDate("modify_create"));
                     people.add(person);
