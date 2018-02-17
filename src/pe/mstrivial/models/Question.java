@@ -6,10 +6,12 @@ public class Question {
     private int id;
     private int id_category;
     private String descriptionQuestion;
+    private int point;
     private Date createDate;
     private Date modifyDate;
 
-    public Question(int id, int id_category, String descriptionQuestion, Date createDate, Date modifyDate){
+
+    public Question(int id, String descriptionQuestion){
         this.id = id;
         this.id_category = id_category;
         this.descriptionQuestion = descriptionQuestion;
@@ -46,6 +48,15 @@ public class Question {
         return this;
     }
 
+    public int getPoint() {
+        return point;
+    }
+
+    public Question setPoint(int point) {
+        this.point = point;
+        return this;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
@@ -63,4 +74,6 @@ public class Question {
         this.modifyDate = modifyDate;
         return this;
     }
+
+
 }
