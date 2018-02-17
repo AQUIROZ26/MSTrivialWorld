@@ -4,38 +4,33 @@ import java.util.Date;
 
 public class Person {
     private int id;
+    private int companyId;
     private String firstName;
     private String lastNameP;
     private String lastNameM;
-    private String gender;
-    private String country;
-    private String province;
-    private String phoneNumber;
     private String email;
+    private String username;
+    private String password;
     private Date createDate;
     private Date modifyDate;
 
-    public Person(int maxId, String firstName, String lastNameP, String lastNameM, String gender, String country, String province, String phone_number, String email, Date createDate, Date modifiyDate){
-
-    }
-
-    public Person(int id, String firstName, String lastNameP, String lastNameM){
-        this.id= id;
-        this.firstName= firstName;
-        this.lastNameP= lastNameP;
-        this.lastNameM= lastNameM;
-        this.gender= gender;
-        this.country= country;
-        this.province= province;
-        this.phoneNumber= phoneNumber;
-        this.email= email;
-        this.createDate= createDate;
-        this.modifyDate= modifyDate;
-    }
-
     public Person() {
-
     }
+
+    public Person(int id, int companyId, String firstName, String lastNameP, String lastNameM, String email,
+                  String username, String password, Date createDate, Date modifyDate) {
+        this.id = id;
+        this.companyId = companyId;
+        this.firstName = firstName;
+        this.lastNameP = lastNameP;
+        this.lastNameM = lastNameM;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.createDate = createDate;
+        this.modifyDate = modifyDate;
+    }
+
 
     public int getId() {
         return id;
@@ -43,7 +38,16 @@ public class Person {
 
     public Person setId(int id) {
         this.id = id;
-        return  this;
+        return this;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public Person setCompanyId(int companyId) {
+        this.companyId = companyId;
+        return this;
     }
 
     public String getFirstName() {
@@ -52,7 +56,7 @@ public class Person {
 
     public Person setFirstName(String firstName) {
         this.firstName = firstName;
-        return  this;
+        return this;
     }
 
     public String getLastNameP() {
@@ -61,7 +65,7 @@ public class Person {
 
     public Person setLastNameP(String lastNameP) {
         this.lastNameP = lastNameP;
-        return  this;
+        return this;
     }
 
     public String getLastNameM() {
@@ -70,43 +74,7 @@ public class Person {
 
     public Person setLastNameM(String lastNameM) {
         this.lastNameM = lastNameM;
-        return  this;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public Person setGender(String gender) {
-        this.gender = gender;
-        return  this;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public Person setCountry(String country) {
-        this.country = country;
-        return  this;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public Person setProvince(String province) {
-        this.province = province;
-        return  this;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public Person setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-        return  this;
+        return this;
     }
 
     public String getEmail() {
@@ -115,7 +83,25 @@ public class Person {
 
     public Person setEmail(String email) {
         this.email = email;
-        return  this;
+        return this;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public Person setUsername(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Person setPassword(String password) {
+        this.password = password;
+        return this;
     }
 
     public Date getCreateDate() {
@@ -124,7 +110,7 @@ public class Person {
 
     public Person setCreateDate(Date createDate) {
         this.createDate = createDate;
-        return  this;
+        return this;
     }
 
     public Date getModifyDate() {
@@ -133,6 +119,6 @@ public class Person {
 
     public Person setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
-        return  this;
+        return this;
     }
 }
