@@ -4,20 +4,19 @@ import java.util.Date;
 
 public class Question {
     private int id;
-    private int id_category;
+    private int categoryId;
     private String descriptionQuestion;
     private int point;
     private Date createDate;
     private Date modifyDate;
 
-
-    public Question(int id, String descriptionQuestion, int point){
-        this.id = id;
-        this.id_category = id_category;
-        this.descriptionQuestion = descriptionQuestion;
-        this.point = point;
-        this.createDate = createDate;
-        this.modifyDate = modifyDate;
+    public Question(int id, int categoryId, String descriptionQuestion, int point, Date createDate, Date modifyDate) {
+        this.setId(id);
+        this.setCategoryId(categoryId);
+        this.setDescriptionQuestion(descriptionQuestion);
+        this.setPoint(point);
+        this.setCreateDate(createDate);
+        this.setModifyDate(modifyDate);
     }
 
     public Question() {
@@ -33,12 +32,12 @@ public class Question {
         return this;
     }
 
-    public int getId_category() {
-        return id_category;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public Question setId_category(int id_category) {
-        this.id_category = id_category;
+    public Question setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
         return this;
     }
 
@@ -77,6 +76,4 @@ public class Question {
         this.modifyDate = modifyDate;
         return this;
     }
-
-
 }
