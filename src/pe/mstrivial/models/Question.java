@@ -11,14 +11,17 @@ public class Question {
     private Date modifyDate;
 
 
-    public Question(int id, String descriptionQuestion){
+    public Question(int id, String descriptionQuestion, int point){
         this.id = id;
         this.id_category = id_category;
         this.descriptionQuestion = descriptionQuestion;
+        this.point = point;
         this.createDate = createDate;
         this.modifyDate = modifyDate;
     }
 
+    public Question() {
+    }
 
 
     public int getId() {
