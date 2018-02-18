@@ -17,7 +17,7 @@ public class PeopleEntity extends BaseEntity{
                         .createStatement()
                         .executeQuery(sql);
                 while (resultSet.next()) {
-                    Person person = new Person()
+                    Person person = new Person(getMaxId(), companyId, firstName, lastNameP, lastNameM, country, email, username, password, createDate, modifyDate)
                             .setId(resultSet.getInt("id"))
                             .setCompanyId(resultSet.getInt("id_company"))
                             .setFirstName(resultSet.getString("first_name"))
@@ -131,7 +131,7 @@ public class PeopleEntity extends BaseEntity{
                         +"' , '"+lastNameM+"' , '"+country+"' , '"+email+"' , '"+username+"' , '"+password+"' ,"+createDate+", "+modifyDate+")";
                 int results = updateByCriteria(sql);
                 if (results > 0){
-                    Person person = new Person(getMaxId(), companyId, firstName,lastNameP, lastNameM,country,email, username,
+                    Person person = new Person(getMaxId(), companyId, firstName,lastNameP, lastNameM, country,email, username,
                             password, createDate, modifyDate);
                     return  person;
                 }

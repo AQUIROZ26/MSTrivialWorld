@@ -82,7 +82,7 @@ public class QuestionsEntity extends BaseEntity {
 
 
     private int getMaxId() {
-        String sql = "SELECT MAX(id) AS max_id FROM people";
+        String sql = "SELECT MAX(id) AS max_id FROM questions";
         if(getConnection() != null) {
             try {
                 ResultSet resultSet = getConnection()
