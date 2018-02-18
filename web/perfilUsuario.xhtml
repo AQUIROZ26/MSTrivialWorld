@@ -7,5 +7,24 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:outputLabel value="Perfil Ususario"/>
+    <h:dataTable value="#{peopleBean.person}" var="person">
+     <h:column>
+         <f:facet name="header">Nombres</f:facet>
+         #{person.firstName}
+         <f:facet name="header">Apellido Paterno</f:facet>
+         #{person.lastNameP}
+         <f:facet name="header">Apellido Materno</f:facet>}
+         #{person.lastNameM}
+         <f:facet name="header">Pais de Origen</f:facet>
+         #{person.country}
+         <f:facet name="header">Correo Electronico</f:facet>
+         #{person.email}
+         <f:facet name="header">Usuario</f:facet>
+         #{person.username}
+         <f:facet name="header">Contraseña</f:facet>
+         #{person.password}
+     </h:column>
+
+    </h:dataTable>
 </f:view>
 </html>
