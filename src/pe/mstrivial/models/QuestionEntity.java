@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public class QuestionEntity extends BaseEntity {
-    private static String DEFAULT_SQL= "SELECT * FROM trivial_world.people";
+    private static String DEFAULT_SQL= "SELECT * FROM trivial_world.questions";
 
     private List<Question> findByCriteria (String sql){
         List<Question> questions;
