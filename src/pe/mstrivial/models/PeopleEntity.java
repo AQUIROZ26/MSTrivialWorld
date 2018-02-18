@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class PersonEntity extends BaseEntity{
+public class PeopleEntity extends BaseEntity{
     private static String DEFAULT_SQL= "SELECT * FROM trivial_world.people";
 
     private List<Person> findByCriteria (String sql){
@@ -23,6 +23,7 @@ public class PersonEntity extends BaseEntity{
                             .setFirstName(resultSet.getString("first_name"))
                             .setLastNameP(resultSet.getString("last_name_p"))
                             .setLastNameM(resultSet.getString("last_name_m"))
+                            .setCountry(resultSet.getString("country"))
                             .setEmail(resultSet.getString("email"))
                             .setUsername(resultSet.getString("username"))
                             .setPassword(resultSet.getString("password"))
@@ -75,6 +76,12 @@ public class PersonEntity extends BaseEntity{
         return (people != null ? people.get(0) : null);
     }
 
+    public Person findByCountry (String country) {
+        List<Person> people = findByCriteria(DEFAULT_SQL +
+                " WHERE country = '" +country+ "'");
+        return (people != null ? people.get(0) : null);
+    }
+
     public Person findByEmail (String email) {
         List<Person> people = findByCriteria(DEFAULT_SQL +
                 " WHERE email = '" +email+ "'");
@@ -114,17 +121,17 @@ public class PersonEntity extends BaseEntity{
         return 0;
     }
 
-    public Person create (int companyId, String firstName, String lastNameP, String lastNameM, String email, String username,
+    public Person create (int companyId, String firstName, String lastNameP, String lastNameM, String country, String email, String username,
     String password, Date createDate, Date modifyDate){
         if (findByFirstName(firstName) == null){
             if (getConnection() != null) {
-                String sql = "INSERT INTO people (id, id_company, first_name, last_name_p, last_name_m, " +
+                String sql = "INSERT INTO people (id, id_company, first_name, last_name_p, last_name_m,country, " +
                         "email,username,password,create_date, modify_date) VALUES ("+
                         String.valueOf(getMaxId()+1)+", '"+firstName+"' , '"+companyId+", '"+firstName+"' , '"+lastNameP+"' , '"
-                        +"' , '"+lastNameM+"' , '"+email+"' , '"+username+"' , '"+password+"' ,"+createDate+", "+modifyDate+")";
+                        +"' , '"+lastNameM+"' , '"+country+"' , '"+email+"' , '"+username+"' , '"+password+"' ,"+createDate+", "+modifyDate+")";
                 int results = updateByCriteria(sql);
                 if (results > 0){
-                    Person person = new Person(getMaxId(), companyId, firstName,lastNameP, lastNameM, email, username,
+                    Person person = new Person(getMaxId(), companyId, firstName,lastNameP, lastNameM,country,email, username,
                             password, createDate, modifyDate);
                     return  person;
                 }
@@ -152,6 +159,13 @@ public class PersonEntity extends BaseEntity{
         if(findByLastNameM(person.getLastNameM()) != null) return false;
         return updateByCriteria(
                 "UPDATE people SET last_name_m= '"+person.getLastNameM()+"'"+
+                        "WHERE id="+String.valueOf(person.getId())) > 0;
+    }
+
+    public boolean updateCountry(Person person){
+        if(findByCountry(person.getCountry()) != null) return false;
+        return updateByCriteria(
+                "UPDATE people SET country= '"+person.getCountry()+"'"+
                         "WHERE id="+String.valueOf(person.getId())) > 0;
     }
 
