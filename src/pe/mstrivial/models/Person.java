@@ -17,6 +17,7 @@ public class Person {
     public Person() {
     }
 
+
     public Person(int id, int companyId, String firstName, String lastNameP, String lastNameM, String email,
                   String username, String password, Date createDate, Date modifyDate) {
         this.id = id;
