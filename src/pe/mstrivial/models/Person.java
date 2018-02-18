@@ -8,6 +8,7 @@ public class Person {
     private String firstName;
     private String lastNameP;
     private String lastNameM;
+    private String country;
     private String email;
     private String username;
     private String password;
@@ -17,13 +18,14 @@ public class Person {
     public Person() {
     }
 
-    public Person(int id, int companyId, String firstName, String lastNameP, String lastNameM, String email,
+    public Person(int id, int companyId, String firstName, String lastNameP, String lastNameM, String country, String email,
                   String username, String password, Date createDate, Date modifyDate) {
         this.id = id;
         this.companyId = companyId;
         this.firstName = firstName;
         this.lastNameP = lastNameP;
         this.lastNameM = lastNameM;
+        this.country = country;
         this.email = email;
         this.username = username;
         this.password = password;
@@ -77,6 +79,15 @@ public class Person {
         return this;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public Person setCountry(String country) {
+        this.country = country;
+        return this;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -121,4 +132,5 @@ public class Person {
         this.modifyDate = modifyDate;
         return this;
     }
+
 }
