@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class QuestionEntity extends BaseEntity {
+public class QuestionsEntity extends BaseEntity {
     private static String DEFAULT_SQL= "SELECT * FROM trivial_world.questions";
 
     private List<Question> findByCriteria (String sql){

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryEntity extends BaseEntity{
+public class CategoriesEntity extends BaseEntity{
     private static String DEFAULT_SQL= "SELECT * FROM trivial_world.categories";
     private List<Category> findByCriteria (String sql){
         List<Category> categories;
