@@ -17,7 +17,7 @@ public class PeopleEntity extends BaseEntity{
                         .createStatement()
                         .executeQuery(sql);
                 while (resultSet.next()) {
-                    Person person = new Person(getMaxId(), companyId, firstName, lastNameP, lastNameM, country, email, username, password, createDate, modifyDate)
+                    Person person = new Person()
                             .setId(resultSet.getInt("id"))
                             .setCompanyId(resultSet.getInt("id_company"))
                             .setFirstName(resultSet.getString("first_name"))
