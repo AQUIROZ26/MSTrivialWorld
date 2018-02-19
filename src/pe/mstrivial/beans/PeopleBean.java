@@ -34,7 +34,7 @@ public class PeopleBean implements Serializable {
         return "success";
     }
     public String newPerson (){
-        this.setPerson(new Person(getMaxId(), companyId, firstName, lastNameP, lastNameM, country, email, username, password, createDate, modifyDate));
+        this.setPerson(new Person());
         return "success";
     }
     public String updatePerson(){
