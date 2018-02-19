@@ -1,5 +1,7 @@
 package pe.mstrivial.models;
 
+
+
 import java.util.Date;
 
 public class Person {
@@ -15,22 +17,24 @@ public class Person {
     private Date createDate;
     private Date modifyDate;
 
-    public Person() {
+
+
+
+    public Person(int id, int companyId, String firstName, String lastNameP, String lastNameM, String country, String email, String username, String password, Date createDate, Date modifyDate) {
+        this.setId(id);
+        this.setCompanyId(companyId);
+        this.setFirstName(firstName);
+        this.setLastNameP(lastNameP);
+        this.setLastNameM(lastNameM);
+        this.setCountry(country);
+        this.setEmail(email);
+        this.setUsername(username);
+        this.setPassword(password);
+        this.setCreateDate(createDate);
+        this.setModifyDate(modifyDate);
     }
 
-    public Person(int id, int companyId, String firstName, String lastNameP, String lastNameM, String country, String email,
-                  String username, String password, Date createDate, Date modifyDate) {
-        this.id = id;
-        this.companyId = companyId;
-        this.firstName = firstName;
-        this.lastNameP = lastNameP;
-        this.lastNameM = lastNameM;
-        this.country = country;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.createDate = createDate;
-        this.modifyDate = modifyDate;
+    public Person(int maxId, int companyId, String firstName, String lastNameP, String lastNameM, String email, String username, String password, Date createDate, Date modifyDate) {
     }
 
 
@@ -132,5 +136,6 @@ public class Person {
         this.modifyDate = modifyDate;
         return this;
     }
+
 
 }
