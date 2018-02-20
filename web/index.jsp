@@ -11,6 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  ¡CON FE! 2
+  Prueba
   </body>
 </html>
