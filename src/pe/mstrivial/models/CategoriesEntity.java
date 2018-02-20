@@ -106,3 +106,4 @@ public class CategoriesEntity extends BaseEntity{
                         String.valueOf(category.getId())) > 0;
     }
 }
+;
