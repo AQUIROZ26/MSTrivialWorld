@@ -36,7 +36,7 @@ public class PeopleBean implements Serializable {
     public String newPerson (){
         this.setPerson(new Person());
         return "success";
-    
+
     }
     public String updatePerson(){
        service.updatePerson(this.getPerson());
