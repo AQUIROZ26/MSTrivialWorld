@@ -184,4 +184,3 @@ public class PeopleEntity extends BaseEntity{
 
 
 }
-;

@@ -13,4 +13,3 @@ public class BaseEntity {
         this.connection = connection;
     }
 }
-;
