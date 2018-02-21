@@ -44,11 +44,4 @@ public class PeopleBean implements Serializable {
        return "success";
 
 }
-
-    public String createPerson(){
-        service.createPerson(this.getPerson().getCompanyId(),this.getPerson().getFirstName(),this.getPerson().getLastNameP(),
-                this.getPerson().getLastNameM(),this.getPerson().getCountry(),this.getPerson().getUsername(),
-                this.getPerson().getPassword(),this.getPerson().getCreateDate(),this.getPerson().getModifyDate());
-        return "success";
-    }
 }
