@@ -6,15 +6,49 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:outputLabel value="Hello, world"/>
     <h:form>
-        <h:inputText id="Nombre" value="#{peopleBean.person.firstName}"/>
-        <h:inputText id="Apellido Paterno" value="#{peopleBean.person.lastNameP}"/>
-        <h:inputText id="Apellido Materno" value="#{peopleBean.person.lastNameM}"/>
-        <h:inputText id="Email" value="#{peopleBean.person.email}"/>
-        <h:inputText id="Nombre de Usuario" value="#{peopleBean.person.username}"/>
-        <h:inputSecret id="Contraseña" value="#{peopleBean.person.password}"/>
-        <h:commandButton value="Create" action="#{peopleBean.createPerson}"/>
+    <h:outputLabel value="Nombre" for="firstName"/>
+        <h:inputText value="#{peopleBean.person.firstName}" id="firstName"/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Apellido Paterno" for="lastNameP"/>
+        <h:inputText value="#{peopleBean.person.lastNameP}" id="lastNameP"/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Apellido Materno" for="lastNameM"/>
+        <h:inputText value="#{peopleBean.person.lastNameM}" id="lastNameM"/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Pais" for="country"/>
+        <h:inputText value="#{peopleBean.person.country}" id="country"/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Nombre de Usuario" for="username"/>
+        <h:inputText value="#{peopleBean.person.username}" id="username"/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Correo Electronico" for="email"/>
+        <h:inputText value="#{peopleBean.person.email}" id="email"/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Contraseña" for="password"/>
+        <h:inputSecret value="#{peopleBean.person.password}" id="password"/>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h:commandButton id="registroButton"
+                         value="Registrar"
+                         action="#{login.doValidateInput}"/>
+
+
+
+
     </h:form>
 
 </f:view>
