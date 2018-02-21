@@ -80,8 +80,8 @@ public class TwService {
         return  getPeopleEntity() != null ? getPeopleEntity().findByEmail(email) : null;
     }
 
-    public  Person createPerson (int id_company, String firstName, String lastNameP, String lastNameM, String country,
-                                 String email, String username, String password, Date createDate, Date modifyDate){
+    public  Person createPerson(int id_company, String firstName, String lastNameP, String lastNameM, String country,
+                                String email, String username, Date createDate, Date modifyDate){
         return getPeopleEntity() != null ? getPeopleEntity()
                 .create(id_company,firstName,lastNameP,lastNameM, country,
                         email, username,password,createDate,modifyDate) : null;
