@@ -7,6 +7,7 @@ import pe.mstrivial.models.TwService;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.List;
 
 @Named
 @SessionScoped
@@ -14,12 +15,12 @@ public class PeopleBean implements Serializable {
     private TwService service;
     private Person person;
 
-    public TwService getService() {
-        return service;
+    public PeopleBean() {
+        service = new TwService();
     }
 
-    public void setService(TwService service) {
-        this.service = service;
+    public List<Person> getPeople(){
+        return service.findAllPeople();
     }
 
     public Person getPerson() {
@@ -36,6 +37,7 @@ public class PeopleBean implements Serializable {
     public String newPerson (){
         this.setPerson(new Person());
         return "success";
+
     }
     public String updatePerson(){
        service.updatePerson(this.getPerson());
