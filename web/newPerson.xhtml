@@ -22,23 +22,27 @@
         <br></br>
         <br></br>
         <br></br>
-        <h:outputLabel value="Country" for="country"/>
+        <h:outputLabel value="Pais" for="country"/>
         <h:inputText value="#{peopleBean.person.country}" id="country"/>
         <br></br>
         <br></br>
         <br></br>
-        <h:outputLabel value="User Name" for="username"/>
+        <h:outputLabel value="Nombre de Usuario" for="username"/>
         <h:inputText value="#{peopleBean.person.username}" id="username"/>
         <br></br>
         <br></br>
         <br></br>
-        <h:outputLabel value="Email" for="email"/>
+        <h:outputLabel value="Correo Electronico" for="email"/>
         <h:inputText value="#{peopleBean.person.email}" id="email"/>
         <br></br>
         <br></br>
         <br></br>
-        <h:outputLabel value="Password" for="password"/>
+        <h:outputLabel value="Contraseña" for="password"/>
         <h:inputSecret value="#{peopleBean.person.password}" id="password"/>
+
+        <h:commandButton id="registroButton"
+                         value="Registrar"
+                         action="#{login.doValidateInput}"/>
 
 
 
