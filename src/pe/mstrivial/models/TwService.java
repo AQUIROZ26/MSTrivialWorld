@@ -61,23 +61,28 @@ public class TwService {
     }
 
     public Person findPersonById (int id){
-        return getPeopleEntity() != null ? getPeopleEntity().findById(id) : null;
+        return getPeopleEntity() != null ?
+                getPeopleEntity().findById(id) : null;
     }
 
     public Person findPersonByFirstName (String firstName){
-        return getPeopleEntity() != null ? getPeopleEntity().findByFirstName(firstName) : null ;
+        return getPeopleEntity() != null ?
+                getPeopleEntity().findByFirstName(firstName) : null ;
     }
 
     public Person findPersonByLastNameP (String lastNameP){
-        return getPeopleEntity() != null ? getPeopleEntity().findByLastNameP(lastNameP) : null;
+        return getPeopleEntity() != null ?
+                getPeopleEntity().findByLastNameP(lastNameP) : null;
     }
 
     public  Person findPersonByLastNameM (String lastNameM){
-        return  getPeopleEntity() != null ? getPeopleEntity().findByLastNameM(lastNameM) : null;
+        return  getPeopleEntity() != null ?
+                getPeopleEntity().findByLastNameM(lastNameM) : null;
     }
 
     public Person findPersonByEmail (String email){
-        return  getPeopleEntity() != null ? getPeopleEntity().findByEmail(email) : null;
+        return  getPeopleEntity() != null ?
+                getPeopleEntity().findByEmail(email) : null;
     }
 
     public  Person createPerson (int id_company, String firstName, String lastNameP, String lastNameM, String country,
@@ -88,10 +93,12 @@ public class TwService {
     }
 
     public boolean deletePerson(int id){
-        return getPeopleEntity() != null ? getPeopleEntity().delete(id) : false;
+        return getPeopleEntity() != null ?
+                getPeopleEntity().delete(id) : false;
     }
 
     public boolean updatePerson (Person person) {
-            return getPeopleEntity() != null ? getPeopleEntity().updateFirstName(person) : false;
+            return getPeopleEntity() != null ?
+                    getPeopleEntity().updateFirstName(person) : false;
     }
 }
