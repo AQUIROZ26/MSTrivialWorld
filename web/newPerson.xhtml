@@ -6,15 +6,11 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:outputLabel value="Hello, world"/>
     <h:form>
-        <h:inputText id="Nombre" value="#{peopleBean.person.firstName}"/>
-        <h:inputText id="Apellido Paterno" value="#{peopleBean.person.lastNameP}"/>
-        <h:inputText id="Apellido Materno" value="#{peopleBean.person.lastNameM}"/>
-        <h:inputText id="Email" value="#{peopleBean.person.email}"/>
-        <h:inputText id="Nombre de Usuario" value="#{peopleBean.person.username}"/>
-        <h:inputSecret id="Contraseña" value="#{peopleBean.person.password}"/>
-        <h:commandButton value="Create" action="#{peopleBean.createPerson}"/>
+    <h:outputLabel value="Nombre" for="firstName"/>
+        <h:inputText value="#{triviaWorld.firstName}" id="firstName"/>
+
+
     </h:form>
 
 </f:view>
