@@ -8,7 +8,21 @@
 <f:view>
     <h:form>
     <h:outputLabel value="Nombre" for="firstName"/>
-        <h:inputText value="#{triviaWorld.firstName}" id="firstName"/>
+        <h:inputText value="#{peopleBean.person.firstName}" id="firstName"/>
+        <h:outputLabel value="Apellido Paterno" for="lastNameP"/>
+        <h:inputText value="#{peopleBean.person.lastNameP}" id="lastNameP"/>
+        <h:outputLabel value="Apellido Materno" for="lastNameM"/>
+        <h:inputText value="#{peopleBean.person.lastNameM}" id="lastNameM"/>
+        <h:outputLabel value="Country" for="country"/>
+        <h:inputText value="#{peopleBean.person.country}" id="country"/>
+        <h:outputLabel value="User Name" for="username"/>
+        <h:inputText value="#{peopleBean.person.username}" id="username"/>
+        <h:outputLabel value="Email" for="email"/>
+        <h:inputText value="#{peopleBean.person.email}" id="email"/>
+        <h:outputLabel value="Password" for="password"/>
+        <h:inputSecret value="#{peopleBean.person.password}" id="password"/>
+
+
 
 
     </h:form>
