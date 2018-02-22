@@ -20,7 +20,7 @@ public class PeopleBean implements Serializable {
         service = new TwService();
     }
 
-    public List<Person> getPeople(){
+    public List<Person> getPeople() {
         return service.findAllPeople();
     }
 
@@ -31,25 +31,21 @@ public class PeopleBean implements Serializable {
     public void setPerson(Person person) {
         this.person = person;
     }
-    public String editPerson (Person person){
+
+    public String editPerson(Person person) {
         this.setPerson(person);
         return "success";
     }
-    public String newPerson (){
+
+    public String newPerson() {
         this.setPerson(new Person());
         return "success";
-
     }
-    public String updatePerson(){
-       service.updatePerson(this.getPerson());
-       return "success";
 
-}
-
-    public String createPerson(){
-        service.createPerson(this.getPerson().getCompanyId(),this.getPerson().getFirstName(),this.getPerson().getLastNameP(),
-                this.getPerson().getLastNameM(),this.getPerson().getCountry(),this.getPerson().getEmail(),this.getPerson().getUsername(),
-                this.getPerson().getPassword(),this.getPerson().getCreateDate(),this.getPerson().getModifyDate());
-        return "success";
+    public String updatePerson() {
+            service.updatePerson(this.getPerson());
+            return "success";
     }
+
+
 }
