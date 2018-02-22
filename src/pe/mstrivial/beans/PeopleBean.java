@@ -42,8 +42,8 @@ public class PeopleBean implements Serializable {
     }
 
     public String updatePerson() {
-        service.updatePerson(this.getPerson());
-        return "success";
+            service.updatePerson(this.getPerson());
+            return "success";
     }
 
 
