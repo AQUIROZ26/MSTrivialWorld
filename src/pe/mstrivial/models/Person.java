@@ -34,8 +34,6 @@ public class Person {
         this.setModifyDate(modifyDate);
     }
 
-    public Person(int maxId, int companyId, String firstName, String lastNameP, String lastNameM, String email, String username, String password, Date createDate, Date modifyDate) {
-    }
 
     public Person() {
 
