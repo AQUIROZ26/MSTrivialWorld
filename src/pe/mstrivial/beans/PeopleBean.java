@@ -16,6 +16,7 @@ public class PeopleBean implements Serializable {
     private Person person;
 
     public PeopleBean() {
+
         service = new TwService();
     }
 
@@ -42,8 +43,8 @@ public class PeopleBean implements Serializable {
     }
 
     public String updatePerson() {
-        service.updatePerson(this.getPerson());
-        return "success";
+            service.updatePerson(this.getPerson());
+            return "success";
     }
 
     public String createPerson(){
