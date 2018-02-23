@@ -14,4 +14,7 @@
             <to-view-id>/invalid.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id></from-view-id>
+    </navigation-rule>
 </faces-config>
