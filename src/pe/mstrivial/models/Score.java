@@ -5,15 +5,15 @@ import java.util.Date;
 public class Score {
 
     private int id;
-    private int playerId;
+    private Person person;
     private int victories;
     private int defeats;
     private Date createDate;
     private Date modifyDate;
 
-    public Score(int id, int playerId, int victories, int defeats, Date createDate, Date modifyDate) {
+    public Score(int id, Person person, int victories, int defeats, Date createDate, Date modifyDate) {
         this.id = id;
-        this.playerId = playerId;
+        this.person = person;
         this.victories = victories;
         this.defeats = defeats;
         this.createDate = createDate;
@@ -35,12 +35,13 @@ public class Score {
         return this;
     }
 
-    public int getPlayerId() {
-        return playerId;
+    public Person getPerson() {
+
+        return person;
     }
 
-    public Score setPlayerId(int playerId) {
-        this.playerId = playerId;
+    public Score setPerson(Person person) {
+        this.person = person;
         return this;
     }
 
