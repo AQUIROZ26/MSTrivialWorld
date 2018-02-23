@@ -7,24 +7,26 @@ import java.util.Date;
 import java.util.List;
 
 public class AnswersEntity extends BaseEntity {
-    private static String DEFAULT_SQL= "SELECT * FROM trivial_world.questions";
+    private static String DEFAULT_SQL = "SELECT * FROM trivial_world.questions";
 
-    private List<Answer> findByCriteria (String sql){
+    private List<Answer> findByCriteria(String sql, QuestionsEntity questionsEntity) {
         List<Answer> answers;
-        if(getConnection() != null){
+        if (getConnection() != null) {
             answers = new ArrayList<>();
             try {
                 ResultSet resultSet = getConnection()
                         .createStatement()
                         .executeQuery(sql);
                 while (resultSet.next()) {
-                    Answer answer = new Answer()
-                            .setId(resultSet.getInt("id"))
-                            .setQuestionId(resultSet.getInt("question_id"))
-                            .setDescriptionAnswer(resultSet.getString("description_answer"))
-                            .setFlag(resultSet.getInt("flag"))
-                            .setCreateDate(resultSet.getDate("create_date"))
-                            .setModifyDate(resultSet.getDate("modify_create"));
+                    Answer answer = new Answer(
+                            resultSet.getInt("id"),
+                            questionsEntity.findById(resultSet.getInt("question_id")),
+                            resultSet.getString("description_answer"),
+                            resultSet.getInt("flag"),
+                            resultSet.getDate("create_date"),
+                            resultSet.getDate("modify_create")
+
+                    );
                     answers.add(answer);
                 }
                 return answers;
@@ -36,12 +38,12 @@ public class AnswersEntity extends BaseEntity {
         return null;
     }
 
-    public List<Answer> findAll() {
+    public List<Answer> findAll(QuestionsEntity questionsEntity) {
 
-        return findByCriteria(DEFAULT_SQL);
+        return findByCriteria(DEFAULT_SQL, questionsEntity);
     }
 
-    public Answer findById(int id) {
+    /*public Answer findById(int id) {
         List<Answer> answers = findByCriteria(DEFAULT_SQL +
                 " WHERE id = "+ String.valueOf(id));
         return (answers != null ? answers.get(0) : null);
@@ -105,6 +107,6 @@ public class AnswersEntity extends BaseEntity {
                         "WHERE id="+String.valueOf(answer.getId())) > 0;
     }
 
-
+*/
 }
 
