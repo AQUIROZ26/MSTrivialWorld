@@ -5,22 +5,24 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScoresEntity extends BaseEntity {
-    private static String DEFAULT_SQL = "SELECT * FROM trivial_world.scores";
-    private List<Score> findByCriteria(String sql, PeopleEntity peopleEntity) {
-        List<Score> scores;
+public class TriviasEntity extends BaseEntity {
+   /* private static String DEFAULT_SQL = "SELECT * FROM trivial_world.trivias";
+    private List<Trivia> findByCriteria(String sql, PeopleEntity peopleEntity) {
+        List<Trivia> trivias;
         if (getConnection() != null) {
-            scores = new ArrayList<>();
+            trivias = new ArrayList<>();
             try {
                 ResultSet resultSet = getConnection()
                         .createStatement()
                         .executeQuery(sql);
                 while (resultSet.next()) {
-                    Score score = new Score(
+                    Trivia trivia = new Trivia(
                             resultSet.getInt("id"),
-                            peopleEntity.findById(resultSet.getInt("player_id")),
-                            resultSet.getInt("victories"),
-                            resultSet.getInt("defeats"),
+                            peopleEntity.findById(resultSet.getInt("player_1_id")),
+                            peopleEntity.findById(resultSet.getInt("player_2_id")),
+                            peopleEntity.findById(resultSet.getInt("category_id")),
+                            resultSet.getInt("winner"),
+                            resultSet.getInt("score_player_1"),
                             resultSet.getDate("create_date"),
                             resultSet.getDate("modify_create"));
                     scores.add(score);
@@ -34,30 +36,31 @@ public class ScoresEntity extends BaseEntity {
         return null;
     }
 
-    public List<Score> findAll(PeopleEntity peopleEntity) {
+//    public List<Score> findAll() {
+//
+//        return findByCriteria(DEFAULT_SQL);
+//    }
 
-        return findByCriteria(DEFAULT_SQL,peopleEntity);
-    }
-
-    public Score findById(int id, PeopleEntity peopleEntity) {
-        List<Score> scores = findByCriteria(DEFAULT_SQL+" WHERE id ="+ String.valueOf(id),peopleEntity);
-        return (scores != null ? scores.get(0) : null);
-    }
-/*
-    public Score findByPlayerId(PeopleEntity peopleEntity) {
+    public Score findById(int id) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE player_id = '" +peopleEntity + "'", peopleEntity);
+                " WHERE id = " + String.valueOf(id));
         return (scores != null ? scores.get(0) : null);
     }
 
-
-    public Score findByVictories(String victories, PeopleEntity peopleEntity) {
+    public Score findByPlayerId(int playerId) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE victories = '" + victories + "'"+String.valueOf(peopleEntity),peopleEntity);
+                " WHERE player_id = '" + playerId + "'");
         return (scores != null ? scores.get(0) : null);
     }
 
-    public Score findByDefeats(String defeats, PeopleEntity peopleEntity) {
+
+    public Score findByVictories(String victories) {
+        List<Score> scores = findByCriteria(DEFAULT_SQL +
+                " WHERE victories = '" + victories + "'");
+        return (scores != null ? scores.get(0) : null);
+    }
+
+    public Score findByDefeats(String defeats) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
                 " WHERE defeats = '" + defeats + "'");
         return (scores != null ? scores.get(0) : null);
@@ -92,6 +95,8 @@ public class ScoresEntity extends BaseEntity {
             }
         }
         return 0;
-    }*/
+    }
+
+*/
 
 }

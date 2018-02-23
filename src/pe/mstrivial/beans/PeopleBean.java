@@ -16,7 +16,6 @@ public class PeopleBean implements Serializable {
     private Person person;
 
     public PeopleBean() {
-
         service = new TwService();
     }
 
