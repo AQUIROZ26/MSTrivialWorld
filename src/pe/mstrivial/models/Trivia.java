@@ -28,7 +28,7 @@ public Trivia(int id,Person person1,Person person2,Category category, int winner
     this.setEndDate(endDate);
 
     }
-    
+
     public Trivia() {
     }
 
