@@ -6,16 +6,16 @@ public class Score {
 
     private int id;
     private Person person;
-    private int victories;
-    private int defeats;
+    private int victory;
+    private int defeat;
     private Date createDate;
     private Date modifyDate;
 
-    public Score(int id, Person person, int victories, int defeats, Date createDate, Date modifyDate) {
+    public Score(int id, Person person, int victory, int defeat, Date createDate, Date modifyDate) {
         this.id = id;
         this.person = person;
-        this.victories = victories;
-        this.defeats = defeats;
+        this.victory = victory;
+        this.defeat = defeat;
         this.createDate = createDate;
         this.modifyDate = modifyDate;
     }
@@ -45,21 +45,21 @@ public class Score {
         return this;
     }
 
-    public int getVictories() {
-        return victories;
+    public int getVictory() {
+        return victory;
     }
 
-    public Score setVictories(int victories) {
-        this.victories = victories;
+    public Score setVictory(int victory) {
+        this.victory = victory;
         return this;
     }
 
-    public int getDefeats() {
-        return defeats;
+    public int getDefeat() {
+        return defeat;
     }
 
-    public Score setDefeats(int defeats) {
-        this.defeats = defeats;
+    public Score setDefeat(int defeat) {
+        this.defeat = defeat;
         return this;
     }
 
