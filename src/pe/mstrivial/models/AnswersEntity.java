@@ -43,28 +43,28 @@ public class AnswersEntity extends BaseEntity {
         return findByCriteria(DEFAULT_SQL, questionsEntity);
     }
 
-    /*public Answer findById(int id) {
+    public Answer findById(int id, QuestionsEntity questionsEntity) {
         List<Answer> answers = findByCriteria(DEFAULT_SQL +
-                " WHERE id = "+ String.valueOf(id));
+                " WHERE id = "+ String.valueOf(id), questionsEntity);
         return (answers != null ? answers.get(0) : null);
     }
 
-    public Answer findByQuestionId(int QuestionId) {
+    /*public Answer findByQuestionEntity(int QuestionEntity, QuestionsEntity questionsEntity) {
         List<Answer> answers = findByCriteria(DEFAULT_SQL +
-                " WHERE question_id = '" + QuestionId+ "'");
+                " WHERE question_id = '" + questionsEntity+ "'", questionsEntity);
+        return (answers != null ? answers.get(0) : null);
+    }*/
+
+
+    public Answer findByDescriptionAnswer(String descriptionAnswer, QuestionsEntity questionsEntity) {
+        List<Answer> answers = findByCriteria(DEFAULT_SQL +
+                " WHERE description_answer = '" + descriptionAnswer+ "'", questionsEntity);
         return (answers != null ? answers.get(0) : null);
     }
 
-
-    public Answer findByDescriptionAnswer(String descriptionAnswer) {
+    public Answer findByFlag(int flag, QuestionsEntity questionsEntity) {
         List<Answer> answers = findByCriteria(DEFAULT_SQL +
-                " WHERE description_answer = '" + descriptionAnswer+ "'");
-        return (answers != null ? answers.get(0) : null);
-    }
-
-    public Answer findByFlag(int flag) {
-        List<Answer> answers = findByCriteria(DEFAULT_SQL +
-                " WHERE flag = '" + flag+ "'");
+                " WHERE flag = '" + flag+ "'", questionsEntity);
         return (answers != null ? answers.get(0) : null);
     }
 
@@ -100,8 +100,8 @@ public class AnswersEntity extends BaseEntity {
     }
 
 
-    public boolean updateDescriptionAnswer (Answer answer){
-        if(findByDescriptionAnswer(answer.getDescriptionAnswer()) != null) return false;
+   /* public boolean updateDescriptionAnswer (Answer answer){
+        if(findByDescriptionAnswer(answer.getDescriptionAnswer(), QuestionsEntity) != null) return false;
         return updateByCriteria(
                 "UPDATE questions SET description_question = '"+answer.getDescriptionAnswer()+"'"+
                         "WHERE id="+String.valueOf(answer.getId())) > 0;
