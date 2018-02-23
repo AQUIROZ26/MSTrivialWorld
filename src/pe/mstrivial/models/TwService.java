@@ -13,6 +13,7 @@ public class TwService {
     PeopleEntity peopleEntity;
     CategoriesEntity categoriesEntity;
     QuestionsEntity questionsEntity;
+    AnswersEntity answersEntity;
 
     private Connection getConnection(){
         if (connection == null){
@@ -101,4 +102,25 @@ public class TwService {
             return getPeopleEntity() != null ?
                     getPeopleEntity().updateFirstName(person) : false;
     }
+
+    protected AnswersEntity getAnswersEntity(){
+        if(getConnection() != null){
+            if(answersEntity == null){
+                answersEntity = new AnswersEntity();
+                answersEntity.setConnection(getConnection());
+            }
+        }
+        return answersEntity;
+    }
+
+    public Answer findAnswerByDescriptionAnswer (String descriptionAnswer, QuestionsEntity questionsEntity){
+        return getAnswersEntity() != null ?
+                getAnswersEntity().findByDescriptionAnswer(descriptionAnswer, questionsEntity) : null;
+    }
+
+    public boolean updateAnswer (Answer answer) {
+        return getAnswersEntity() != null ?
+                getAnswersEntity().updateDescriptionAnswer(answer, questionsEntity) : false;
+    }
+
 }

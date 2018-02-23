@@ -49,11 +49,11 @@ public class AnswersEntity extends BaseEntity {
         return (answers != null ? answers.get(0) : null);
     }
 
-    /*public Answer findByQuestionEntity(int QuestionEntity, QuestionsEntity questionsEntity) {
+    public Answer findByQuestionEntity(int QuestionEntity, QuestionsEntity questionsEntity) {
         List<Answer> answers = findByCriteria(DEFAULT_SQL +
                 " WHERE question_id = '" + questionsEntity+ "'", questionsEntity);
         return (answers != null ? answers.get(0) : null);
-    }*/
+    }
 
 
     public Answer findByDescriptionAnswer(String descriptionAnswer, QuestionsEntity questionsEntity) {
@@ -100,13 +100,13 @@ public class AnswersEntity extends BaseEntity {
     }
 
 
-   /* public boolean updateDescriptionAnswer (Answer answer){
-        if(findByDescriptionAnswer(answer.getDescriptionAnswer(), QuestionsEntity) != null) return false;
+    public boolean updateDescriptionAnswer (Answer answer, QuestionsEntity questionsEntity){
+        if(findByDescriptionAnswer(answer.getDescriptionAnswer(), questionsEntity) != null) return false;
         return updateByCriteria(
                 "UPDATE questions SET description_question = '"+answer.getDescriptionAnswer()+"'"+
                         "WHERE id="+String.valueOf(answer.getId())) > 0;
     }
 
-*/
+
 }
 
