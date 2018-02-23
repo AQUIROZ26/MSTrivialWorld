@@ -7,24 +7,26 @@ import java.util.Date;
 import java.util.List;
 
 public class AnswersEntity extends BaseEntity {
-    private static String DEFAULT_SQL= "SELECT * FROM trivial_world.questions";
+    private static String DEFAULT_SQL = "SELECT * FROM trivial_world.questions";
 
-    private List<Answer> findByCriteria (String sql){
+    private List<Answer> findByCriteria(String sql, QuestionsEntity questionsEntity) {
         List<Answer> answers;
-        if(getConnection() != null){
+        if (getConnection() != null) {
             answers = new ArrayList<>();
             try {
                 ResultSet resultSet = getConnection()
                         .createStatement()
                         .executeQuery(sql);
                 while (resultSet.next()) {
-                    Answer answer = new Answer()
-                            .setId(resultSet.getInt("id"))
-                            .setQuestionId(resultSet.getInt("question_id"))
-                            .setDescriptionAnswer(resultSet.getString("description_answer"))
-                            .setFlag(resultSet.getInt("flag"))
-                            .setCreateDate(resultSet.getDate("create_date"))
-                            .setModifyDate(resultSet.getDate("modify_create"));
+                    Answer answer = new Answer(
+                            resultSet.getInt("id"),
+                            questionsEntity.findById(resultSet.getInt("question_id")),
+                            resultSet.getString("description_answer"),
+                            resultSet.getInt("flag"),
+                            resultSet.getDate("create_date"),
+                            resultSet.getDate("modify_create")
+
+                    );
                     answers.add(answer);
                 }
                 return answers;
@@ -36,33 +38,33 @@ public class AnswersEntity extends BaseEntity {
         return null;
     }
 
-    public List<Answer> findAll() {
+    public List<Answer> findAll(QuestionsEntity questionsEntity) {
 
-        return findByCriteria(DEFAULT_SQL);
+        return findByCriteria(DEFAULT_SQL, questionsEntity);
     }
 
-    public Answer findById(int id) {
+    public Answer findById(int id, QuestionsEntity questionsEntity) {
         List<Answer> answers = findByCriteria(DEFAULT_SQL +
-                " WHERE id = "+ String.valueOf(id));
+                " WHERE id = "+ String.valueOf(id), questionsEntity);
         return (answers != null ? answers.get(0) : null);
     }
 
-    public Answer findByQuestionId(int QuestionId) {
+    /*public Answer findByQuestionEntity(int QuestionEntity, QuestionsEntity questionsEntity) {
         List<Answer> answers = findByCriteria(DEFAULT_SQL +
-                " WHERE question_id = '" + QuestionId+ "'");
+                " WHERE question_id = '" + questionsEntity+ "'", questionsEntity);
+        return (answers != null ? answers.get(0) : null);
+    }*/
+
+
+    public Answer findByDescriptionAnswer(String descriptionAnswer, QuestionsEntity questionsEntity) {
+        List<Answer> answers = findByCriteria(DEFAULT_SQL +
+                " WHERE description_answer = '" + descriptionAnswer+ "'", questionsEntity);
         return (answers != null ? answers.get(0) : null);
     }
 
-
-    public Answer findByDescriptionAnswer(String descriptionAnswer) {
+    public Answer findByFlag(int flag, QuestionsEntity questionsEntity) {
         List<Answer> answers = findByCriteria(DEFAULT_SQL +
-                " WHERE description_answer = '" + descriptionAnswer+ "'");
-        return (answers != null ? answers.get(0) : null);
-    }
-
-    public Answer findByFlag(int flag) {
-        List<Answer> answers = findByCriteria(DEFAULT_SQL +
-                " WHERE flag = '" + flag+ "'");
+                " WHERE flag = '" + flag+ "'", questionsEntity);
         return (answers != null ? answers.get(0) : null);
     }
 
@@ -98,13 +100,13 @@ public class AnswersEntity extends BaseEntity {
     }
 
 
-    public boolean updateDescriptionAnswer (Answer answer){
-        if(findByDescriptionAnswer(answer.getDescriptionAnswer()) != null) return false;
+   /* public boolean updateDescriptionAnswer (Answer answer){
+        if(findByDescriptionAnswer(answer.getDescriptionAnswer(), QuestionsEntity) != null) return false;
         return updateByCriteria(
                 "UPDATE questions SET description_question = '"+answer.getDescriptionAnswer()+"'"+
                         "WHERE id="+String.valueOf(answer.getId())) > 0;
     }
 
-
+*/
 }
 
