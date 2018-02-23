@@ -13,6 +13,7 @@ public class TwService {
     PeopleEntity peopleEntity;
     CategoriesEntity categoriesEntity;
     QuestionsEntity questionsEntity;
+    ScoresEntity scoresEntity;
 
     private Connection getConnection(){
         if (connection == null){
@@ -51,6 +52,8 @@ public class TwService {
         }
         return categoriesEntity;
     }
+
+
 
     public List<Person> findAllPeople(){
         return getPeopleEntity() != null ? getPeopleEntity().findAll() : null;
