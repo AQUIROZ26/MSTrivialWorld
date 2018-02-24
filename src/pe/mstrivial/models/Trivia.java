@@ -14,18 +14,18 @@ public class Trivia {
     private Date startDate;
     private Date endDate;
 
-public Trivia(int id,Person person1,Person person2,Category category, int winner,int scorePlayer1,int scorePlayer2,
-              Date startDate,Date endDate){
+    public Trivia(int id,Person person1,Person person2,Category category, int winner,int scorePlayer1,int scorePlayer2,
+                  Date startDate,Date endDate){
 
-    this.setId(id);
-    this.setPerson1(person1);
-    this.setPerson2(person2);
-    this.setCategory(category);
-    this.setWinner(winner);
-    this.setScorePlayer1(scorePlayer1);
-    this.setScorePlayer2(scorePlayer2);
-    this.setStartDate(startDate);
-    this.setEndDate(endDate);
+        this.setId(id);
+        this.setPerson1(person1);
+        this.setPerson2(person2);
+        this.setCategory(category);
+        this.setWinner(winner);
+        this.setScorePlayer1(scorePlayer1);
+        this.setScorePlayer2(scorePlayer2);
+        this.setStartDate(startDate);
+        this.setEndDate(endDate);
 
     }
 
