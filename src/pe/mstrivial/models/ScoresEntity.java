@@ -40,26 +40,27 @@ public class ScoresEntity extends BaseEntity {
     }
 
     public Score findById(int id, PeopleEntity peopleEntity) {
-        List<Score> scores = findByCriteria(DEFAULT_SQL+" WHERE id ="+ String.valueOf(id),peopleEntity);
-        return (scores != null ? scores.get(0) : null);
-    }
-/*
-    public Score findByPlayerId(PeopleEntity peopleEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE player_id = '" +peopleEntity + "'", peopleEntity);
+                " WHERE id = " + String.valueOf(id), peopleEntity);
         return (scores != null ? scores.get(0) : null);
     }
 
-
-    public Score findByVictories(String victories, PeopleEntity peopleEntity) {
+    public Score findByPersonEntity(int PersonEntity, PeopleEntity peopleEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE victories = '" + victories + "'"+String.valueOf(peopleEntity),peopleEntity);
+                " WHERE player_id = '" + peopleEntity + "'", peopleEntity);
         return (scores != null ? scores.get(0) : null);
     }
 
-    public Score findByDefeats(String defeats, PeopleEntity peopleEntity) {
+
+    public Score findByVictory(String victory, PeopleEntity peopleEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE defeats = '" + defeats + "'");
+                " WHERE victory = '" + victory + "'", peopleEntity);
+        return (scores != null ? scores.get(0) : null);
+    }
+
+    public Score findByDefeat(String defeat, PeopleEntity peopleEntity) {
+        List<Score> scores = findByCriteria(DEFAULT_SQL +
+                " WHERE defeat = '" + defeat + "'", peopleEntity );
         return (scores != null ? scores.get(0) : null);
     }
 
@@ -92,6 +93,6 @@ public class ScoresEntity extends BaseEntity {
             }
         }
         return 0;
-    }*/
+    }
 
 }

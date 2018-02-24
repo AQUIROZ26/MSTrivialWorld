@@ -14,12 +14,13 @@ public class TwService {
     CategoriesEntity categoriesEntity;
     QuestionsEntity questionsEntity;
     AnswersEntity answersEntity;
+    ScoresEntity scoresEntity;
 
     private Connection getConnection(){
         if (connection == null){
             try {
                 connection = ((DataSource) InitialContext
-                .doLookup("jdbc/MySQLDataSource"))
+                .doLookup("jdbc/MySQLDataSourceTw"))
                         .getConnection();
             } catch (NamingException | SQLException e) {
                 e.printStackTrace();
@@ -112,15 +113,36 @@ public class TwService {
         }
         return answersEntity;
     }
-
+/*
     public Answer findAnswerByDescriptionAnswer (String descriptionAnswer, QuestionsEntity questionsEntity){
         return getAnswersEntity() != null ?
                 getAnswersEntity().findByDescriptionAnswer(descriptionAnswer, questionsEntity) : null;
     }
 
-    public boolean updateAnswer (Answer answer) {
+    public boolean updateScores (Score score) {
+        return getScoresEntity() != null ?
+                getScoresEntity().updateDescriptionAnswer(answer, questionsEntity) : false;
+    }
+
+    protected ScoresEntity getScoresEntity(){
+        if(getConnection() != null){
+            if(scoresEntity == null){
+                scoresEntity = new ScoresEntity();
+                scoresEntity.setConnection(getConnection());
+            }
+        }
+        return scoresEntity;
+    }
+
+    public Score findAnswerByDescriptionAnswer (String descriptionAnswer, QuestionsEntity questionsEntity){
+        return getAnswersEntity() != null ?
+                getAnswersEntity().findByDescriptionAnswer(descriptionAnswer, questionsEntity) : null;
+    }
+
+    public boolean updateAnswer (Score score) {
         return getAnswersEntity() != null ?
                 getAnswersEntity().updateDescriptionAnswer(answer, questionsEntity) : false;
     }
+*/
 
 }
