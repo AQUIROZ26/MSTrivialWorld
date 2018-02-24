@@ -113,15 +113,15 @@ public class TwService {
         }
         return answersEntity;
     }
-/*
+
     public Answer findAnswerByDescriptionAnswer (String descriptionAnswer, QuestionsEntity questionsEntity){
         return getAnswersEntity() != null ?
                 getAnswersEntity().findByDescriptionAnswer(descriptionAnswer, questionsEntity) : null;
     }
 
-    public boolean updateScores (Score score) {
-        return getScoresEntity() != null ?
-                getScoresEntity().updateDescriptionAnswer(answer, questionsEntity) : false;
+    public boolean updateDescriptionAnswer (Answer answer, QuestionsEntity questionsEntity) {
+        return getAnswersEntity() != null ?
+                getAnswersEntity().updateDescriptionAnswer(answer, questionsEntity) : false;
     }
 
     protected ScoresEntity getScoresEntity(){
@@ -134,15 +134,15 @@ public class TwService {
         return scoresEntity;
     }
 
-    public Score findAnswerByDescriptionAnswer (String descriptionAnswer, QuestionsEntity questionsEntity){
-        return getAnswersEntity() != null ?
-                getAnswersEntity().findByDescriptionAnswer(descriptionAnswer, questionsEntity) : null;
+    public Score findScoreByVictory (int victory, PeopleEntity peopleEntity){
+        return getScoresEntity() != null ?
+                getScoresEntity().findByVictory(victory, peopleEntity) : null;
     }
 
-    public boolean updateAnswer (Score score) {
-        return getAnswersEntity() != null ?
-                getAnswersEntity().updateDescriptionAnswer(answer, questionsEntity) : false;
+    public Score findScoreByDefeat (int defeat, PeopleEntity peopleEntity){
+        return getScoresEntity() != null ?
+                getScoresEntity().findByDefeat(defeat, peopleEntity) : null;
     }
-*/
+
 
 }

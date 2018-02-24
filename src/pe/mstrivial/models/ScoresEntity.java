@@ -52,13 +52,13 @@ public class ScoresEntity extends BaseEntity {
     }
 
 
-    public Score findByVictory(String victory, PeopleEntity peopleEntity) {
+    public Score findByVictory(int victory, PeopleEntity peopleEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
                 " WHERE victory = '" + victory + "'", peopleEntity);
         return (scores != null ? scores.get(0) : null);
     }
 
-    public Score findByDefeat(String defeat, PeopleEntity peopleEntity) {
+    public Score findByDefeat(int defeat, PeopleEntity peopleEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
                 " WHERE defeat = '" + defeat + "'", peopleEntity );
         return (scores != null ? scores.get(0) : null);
