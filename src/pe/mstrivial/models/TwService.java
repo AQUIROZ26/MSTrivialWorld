@@ -104,6 +104,26 @@ public class TwService {
                     getPeopleEntity().updateFirstName(person) : false;
     }
 
+    protected QuestionsEntity getQuestionsEntity(){
+        if(getConnection() != null){
+            if(questionsEntity == null){
+                questionsEntity = new QuestionsEntity();
+                questionsEntity.setConnection(getConnection());
+            }
+        }
+        return questionsEntity;
+    }
+
+    public Question findQuestionByDescriptionQuestion (String descriptionQuestion){
+        return getQuestionsEntity() != null ?
+                getQuestionsEntity().findByDescriptionQuestion(descriptionQuestion) : null;
+    }
+
+    public boolean updateDescriptionQuestion (Question question) {
+        return getQuestionsEntity() != null ?
+                getQuestionsEntity().updateDescriptionQuestion(question) : false;
+    }
+
     protected AnswersEntity getAnswersEntity(){
         if(getConnection() != null){
             if(answersEntity == null){
