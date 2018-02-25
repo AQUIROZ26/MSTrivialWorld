@@ -46,9 +46,9 @@ public class PeopleBean implements Serializable {
         this.person = person;
     }
 
-   // public int getId(){
-     //   return this.getCompany().getId();
-    //}
+   public int getId(){
+        return this.getCompany().getId();
+    }
 
     public String getFirstName(){
         return this.getPerson().getFirstName();

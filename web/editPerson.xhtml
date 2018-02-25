@@ -8,32 +8,32 @@
 <f:view>
     <h:outputLabel value="EDITAR USUARIO"/>
     <h:form>
-        <h:outputLabel value="Nombre" for="nombre" />
-        <h:inputText id="nombre" value="#{peopleBean.person.firstName}"/>
+        <h:outputLabel value="Nombre" for="firstName"/>
+        <h:inputText id="firstName" value="#{peopleBean.firstName}"/>
         <br></br>
         <br></br>
-        <h:outputLabel value="Apellido Paterno" for="apellpater"/>
-        <h:inputText id="apellpater" value="#{peopleBean.person.lastNameP}"/>
+        <h:outputLabel value="Apellido Paterno" for="lastNameP"/>
+        <h:inputText id="lastNameP" value="#{peopleBean.lastNameP}"/>
         <br></br>
         <br></br>
-        <h:outputLabel value="Apellido Materno" for="apellmater"/>
-        <h:inputText id="apellmater" value="#{peopleBean.person.lastNameM}"/>
+        <h:outputLabel value="Apellido Materno" for="lastNameM"/>
+        <h:inputText id="lastNameM" value="#{peopleBean.lastNameM}"/>
         <br></br>
         <br></br>
-        <h:outputLabel value="Pais de Origen" for="paisor"/>
-        <h:inputText id="paisor" value="#{peopleBean.person.country}"/>
+        <h:outputLabel value="Pais de Origen" for="country"/>
+        <h:inputText id="country" value="#{peopleBean.country}"/>
         <br></br>
         <br></br>
-        <h:outputLabel value="Correo Electronico" for="correlec"/>
-        <h:inputText id="correlec" value="#{peopleBean.person.email}"/>
+        <h:outputLabel value="Correo Electronico" for="email"/>
+        <h:inputText id="email" value="#{peopleBean.email}"/>
         <br></br>
         <br></br>
-        <h:outputLabel value="Usuario" for="user"/>
-        <h:inputText id="user" value="#{peopleBean.person.username}"/>
+        <h:outputLabel value="Usuario" for="username"/>
+        <h:inputText id="username" value="#{peopleBean.username}"/>
         <br></br>
         <br></br>
-        <h:outputLabel value="Contraseña" for="pass"/>
-        <h:inputText id="pass" value="#{peopleBean.person.password}"/>
+        <h:outputLabel value="Contraseña" for="password"/>
+        <h:inputText id="password" value="#{peopleBean.password}"/>
         <br></br>
         <br></br>
         <h:commandButton value="Actualizar Datos" action="#{peopleBean.updatePerson}"/>
