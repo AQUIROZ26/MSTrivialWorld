@@ -6,35 +6,11 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:messages/>
-    <h:form>
-        <h:outputLabel value="User Name" for="userName"/>
-        <h:inputText value="#{login.userName}" id="userName"
-                     validatorMessage="Please name must have between 4 and 16 characters"
-                     required="true"
-                     requiredMessage="User name cannot be blank">
-            <f:validateLength minimum="4" maximum="16" for="userName"/>
-            <br></br>
-            <br></br>
-            <br></br>
-        </h:inputText>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h:outputLabel value="Password" for="password"/>
-        <h:inputSecret value="#{login.password}" id="password"
-                       validatorMessage="Please password must have between 4 and 16 characters"
-                       required="true"
-                       requiredMessage="Password cannot be blank">
-            <f:validateLength minimum="4" maximum="16" for="password"/>
-        </h:inputSecret>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h:commandButton id="loginButton"
-                         value="Login"
-                         action="#{login.doValidateInput}"/>
 
+    <h:outputLabel value=""/>
+    <h:form>
+    <h:commandButton value="REGISTRO" action="newPerson"/>
+    <h:commandButton value="INICIO SESION" action="login"/>
     </h:form>
 </f:view>
 </html>
