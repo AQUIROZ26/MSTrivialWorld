@@ -46,9 +46,9 @@ public class PeopleBean implements Serializable {
         this.person = person;
     }
 
-    public int getId(){
-        return this.getCompany().getId();
-    }
+   // public int getId(){
+     //   return this.getCompany().getId();
+    //}
 
     public String getFirstName(){
         return this.getPerson().getFirstName();
@@ -103,9 +103,9 @@ public class PeopleBean implements Serializable {
         return "success";
     }
 
-    public String updatePerson() {
-            service.updatePerson(this.getPerson());
-            return "success";
-    }
+    //public String updatePerson() {
+      //      service.updatePerson(this.getPerson());
+        //    return "success";
+    //}
 
 }

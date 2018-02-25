@@ -123,10 +123,10 @@ public class TwService {
                         email, username,password,createDate,modifyDate) : null;
     }
 
-    //public Company createCompany(int id, String name, String ruc, Date createDate, Date modifyDate){
-      //  return getCompaniesEntity() != null ?
-        //        getCompaniesEntity().create(id,name,ruc,createDate,modifyDate) : null;
-    //}
+    public Company createCompany(String name, String ruc, Date createDate, Date modifyDate){
+        return getCompaniesEntity() != null ?
+                getCompaniesEntity().create(name,ruc,createDate,modifyDate) : null;
+    }
 
     public boolean deletePerson(int id){
         return getPeopleEntity() != null ?

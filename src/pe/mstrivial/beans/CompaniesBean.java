@@ -53,7 +53,7 @@ public class CompaniesBean implements Serializable {
     }
 
     public String createCompany(){
-        service.createCompany(this.getCompany(),this.getName(),this.getRuc(),
+        service.createCompany(this.getName(),this.getRuc(),
                 this.getCreateDate(),this.getModifyDate());
         return "success";
     }
