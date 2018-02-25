@@ -22,17 +22,17 @@ public class Person {
     }
 
     public Person(int id, Company company, String firstName, String lastNameP, String lastNameM, String country, String email, String username, String password, Date createDate, Date modifyDate) {
-        this.setId(id);
-        this.setCompany(company);
-        this.setFirstName(firstName);
-        this.setLastNameP(lastNameP);
-        this.setLastNameM(lastNameM);
-        this.setCountry(country);
-        this.setEmail(email);
-        this.setUsername(username);
-        this.setPassword(password);
-        this.setCreateDate(createDate);
-        this.setModifyDate(modifyDate);
+        this.id = id;
+        this.company = company;
+        this.firstName = firstName;
+        this.lastNameP = lastNameP;
+        this.lastNameM = lastNameM;
+        this.country = country;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.createDate = createDate;
+        this.modifyDate = modifyDate;
     }
 
 

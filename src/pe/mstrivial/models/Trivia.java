@@ -14,22 +14,20 @@ public class Trivia {
     private Date startDate;
     private Date endDate;
 
-    public Trivia(int id,Person person1,Person person2,Category category, int winner,int scorePlayer1,int scorePlayer2,
-                  Date startDate,Date endDate){
-
-        this.setId(id);
-        this.setPerson1(person1);
-        this.setPerson2(person2);
-        this.setCategory(category);
-        this.setWinner(winner);
-        this.setScorePlayer1(scorePlayer1);
-        this.setScorePlayer2(scorePlayer2);
-        this.setStartDate(startDate);
-        this.setEndDate(endDate);
-
-    }
 
     public Trivia() {
+    }
+
+    public Trivia(int id, Person person1, Person person2, Category category, int winner, int scorePlayer1, int scorePlayer2, Date startDate, Date endDate) {
+        this.id = id;
+        this.person1 = person1;
+        this.person2 = person2;
+        this.category = category;
+        this.winner = winner;
+        this.scorePlayer1 = scorePlayer1;
+        this.scorePlayer2 = scorePlayer2;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public int getId() {

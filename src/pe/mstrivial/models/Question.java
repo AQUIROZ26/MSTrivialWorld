@@ -10,16 +10,17 @@ public class Question {
     private Date createDate;
     private Date modifyDate;
 
-    public Question(int id, int categoryId, String descriptionQuestion, int point, Date createDate, Date modifyDate) {
-        this.setId(id);
-        this.setCategoryId(categoryId);
-        this.setDescriptionQuestion(descriptionQuestion);
-        this.setPoint(point);
-        this.setCreateDate(createDate);
-        this.setModifyDate(modifyDate);
-    }
 
     public Question() {
+    }
+
+    public Question(int id, int categoryId, String descriptionQuestion, int point, Date createDate, Date modifyDate) {
+        this.id = id;
+        this.categoryId = categoryId;
+        this.descriptionQuestion = descriptionQuestion;
+        this.point = point;
+        this.createDate = createDate;
+        this.modifyDate = modifyDate;
     }
 
 

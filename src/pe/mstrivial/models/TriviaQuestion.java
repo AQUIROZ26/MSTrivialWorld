@@ -13,13 +13,13 @@ public class TriviaQuestion {
     }
 
     public TriviaQuestion(int id, Trivia trivia, Question question, String answerPlayer1, String answerPlayer2, Date createDate, Date modifyDate) {
-        this.setId(id);
-        this.setTrivia(trivia);
-        this.setQuestion(question);
-        this.setAnswerPlayer1(answerPlayer1);
-        this.setAnswerPlayer2(answerPlayer2);
-        this.setCreateDate(createDate);
-        this.setModifyDate(modifyDate);
+        this.id = id;
+        this.trivia = trivia;
+        this.question = question;
+        this.answerPlayer1 = answerPlayer1;
+        this.answerPlayer2 = answerPlayer2;
+        this.createDate = createDate;
+        this.modifyDate = modifyDate;
     }
 
 

@@ -13,12 +13,13 @@ public class Company {
     }
 
     public Company(int id, String name, String ruc, Date createDate, Date modifyDate) {
-        this.setId(id);
-        this.setName(name);
-        this.setRuc(ruc);
-        this.setCreateDate(createDate);
-        this.setModifyDate(modifyDate);
+        this.id = id;
+        this.name = name;
+        this.ruc = ruc;
+        this.createDate = createDate;
+        this.modifyDate = modifyDate;
     }
+
 
     public int getId() {
         return id;
