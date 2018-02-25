@@ -119,16 +119,16 @@ public class PeopleEntity extends BaseEntity{
         return 0;
     }
 
-    public Person create (Company companyId, String firstName, String lastNameP, String lastNameM, String country, String email, String username,
+    public Person create (Company company, String firstName, String lastNameP, String lastNameM, String country, String email, String username,
                           String password, Date createDate, Date modifyDate){
         //if (findByEmail(email) == null){
             if (getConnection() != null) {
                 String sql = "INSERT INTO people (id, id_company, first_name, last_name_p, last_name_m,country, " +
                         "email,username,password,create_date, modify_date) VALUES ("+
-                        String.valueOf(getMaxId()+1)+", '"+firstName+"' , "+companyId.getId()+", '"+firstName+"' , '"+lastNameP+"' ,  '"+lastNameM+"' , '"+country+"' , '"+email+"' , '"+username+"' , '"+password+"' ,"+createDate+", "+modifyDate+")";
+                        String.valueOf(getMaxId()+1)+", '"+firstName+"' , "+company.getId()+", '"+firstName+"' , '"+lastNameP+"' ,  '"+lastNameM+"' , '"+country+"' , '"+email+"' , '"+username+"' , '"+password+"' ,"+createDate+", "+modifyDate+")";
                 int results = updateByCriteria(sql);
                 if (results > 0){
-                    Person person = new Person(getMaxId(), companyId, firstName,lastNameP, lastNameM, country,email, username,
+                    Person person = new Person(getMaxId(), company, firstName,lastNameP, lastNameM, country,email, username,
                             password, createDate, modifyDate);
                     return  person;
                 }
@@ -139,42 +139,42 @@ public class PeopleEntity extends BaseEntity{
 
 
     public boolean updateFirstName (Person person, CompaniesEntity companiesEntity){
-        if(findByFirstName(person.getFirstName()) != null) return false;
+        if(findByFirstName(person.getFirstName(),companiesEntity) != null) return false;
         return updateByCriteria(
                 "UPDATE people SET fist_name = '"+person.getFirstName()+"'"+
                         "WHERE id="+String.valueOf(person.getId())) > 0;
     }
 
 
-    public boolean updateLastNameP (Person person){
-        if(findByLastNameP(person.getLastNameP()) != null) return false;
+    public boolean updateLastNameP (Person person, CompaniesEntity companiesEntity){
+        if(findByLastNameP(person.getLastNameP(),companiesEntity) != null) return false;
         return updateByCriteria(
                 "UPDATE people SET last_name_p= '"+person.getLastNameP()+"'"+
                         "WHERE id="+String.valueOf(person.getId())) > 0;
     }
 
-    public boolean updateLastNameM (Person person){
-        if(findByLastNameM(person.getLastNameM()) != null) return false;
+    public boolean updateLastNameM (Person person, CompaniesEntity companiesEntity){
+        if(findByLastNameM(person.getLastNameM(), companiesEntity) != null) return false;
         return updateByCriteria(
                 "UPDATE people SET last_name_m= '"+person.getLastNameM()+"'"+
                         "WHERE id="+String.valueOf(person.getId())) > 0;
     }
 
-    public boolean updateCountry(Person person){
-        if(findByCountry(person.getCountry()) != null) return false;
+    public boolean updateCountry(Person person, CompaniesEntity companiesEntity){
+        if(findByCountry(person.getCountry(), companiesEntity) != null) return false;
         return updateByCriteria(
                 "UPDATE people SET country= '"+person.getCountry()+"'"+
                         "WHERE id="+String.valueOf(person.getId())) > 0;
     }
 
-    public boolean updateEmail (Person person){
-        if(findByEmail(person.getEmail()) != null) return false;
+    public boolean updateEmail (Person person, CompaniesEntity companiesEntity){
+        if(findByEmail(person.getEmail(), companiesEntity) != null) return false;
         return updateByCriteria(
                 "UPDATE people SET email= '"+person.getEmail()+"'"+
                         "WHERE id="+String.valueOf(person.getId())) > 0;
     }
 
-    public boolean updatePassword (Person person){
+    public boolean updatePassword (Person person, CompaniesEntity companiesEntity){
         return updateByCriteria(
                 "UPDATE people SET password= '"+person.getPassword()+"'"+
                         "WHERE id="+String.valueOf(person.getId())) > 0;
