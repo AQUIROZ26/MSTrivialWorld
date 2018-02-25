@@ -123,12 +123,11 @@ public class PeopleEntity extends BaseEntity{
 
     public Person create (int companyId, String firstName, String lastNameP, String lastNameM, String country, String email, String username,
     String password, Date createDate, Date modifyDate){
-        if (findByFirstName(firstName) == null){
+        if (findByEmail(email) == null){
             if (getConnection() != null) {
                 String sql = "INSERT INTO people (id, id_company, first_name, last_name_p, last_name_m,country, " +
                         "email,username,password,create_date, modify_date) VALUES ("+
-                        String.valueOf(getMaxId()+1)+", '"+firstName+"' , '"+companyId+", '"+firstName+"' , '"+lastNameP+"' , '"
-                        +"' , '"+lastNameM+"' , '"+country+"' , '"+email+"' , '"+username+"' , '"+password+"' ,"+createDate+", "+modifyDate+")";
+                        String.valueOf(getMaxId()+1)+", '"+firstName+"' , "+companyId+", '"+firstName+"' , '"+lastNameP+"' ,  '"+lastNameM+"' , '"+country+"' , '"+email+"' , '"+username+"' , '"+password+"' ,"+createDate+", "+modifyDate+")";
                 int results = updateByCriteria(sql);
                 if (results > 0){
                     Person person = new Person(getMaxId(), companyId, firstName,lastNameP, lastNameM, country,email, username,
