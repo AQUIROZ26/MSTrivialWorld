@@ -35,43 +35,43 @@ public class CompaniesBean implements Serializable {
     }
 
 
-    public String get(){
-        return this.getPerson().getFirstName();
+    public String getName(){
+        return this.getCompany().getName();
     }
 
-    public String getLastNameP(){
-        return this.getPerson().getLastNameP();
+    public String getRuc(){
+        return this.getCompany().getRuc();
     }
 
-    public String getLastNameM(){
-        return this.getPerson().getLastNameM();
-    }
-
-    public String getCountry(){
-        return this.getPerson().getCountry();
-    }
-
-    public String getEmail(){
-        return this.getPerson().getEmail();
-    }
-
-    public String getUsername(){
-        return this.getPerson().getUsername();
-    }
-
-    public String getPassword(){
-        return this.getPerson().getPassword();
-    }
 
     public Date getCreateDate(){
-        return this.getPerson().getCreateDate();
+        return this.getCompany().getCreateDate();
     }
 
     public Date getModifyDate(){
-        return this.getPerson().getModifyDate();
+        return this.getCompany().getModifyDate();
     }
 
+    public String createCompany(){
+        service.createCompany(this.getCompany(),this.getName(),this.getRuc(),
+                this.getCreateDate(),this.getModifyDate());
+        return "success";
+    }
 
+    public String editCompany(Company company) {
+        this.setCompany(company);
+        return "success";
+    }
+
+    public String newCompany() {
+        this.setCompany(new Company());
+        return "success";
+    }
+
+    public String updateCompany() {
+        service.updateCompany(this.getCompany());
+        return "success";
+    }
 
 
 
