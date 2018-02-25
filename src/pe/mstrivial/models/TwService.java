@@ -15,6 +15,7 @@ public class TwService {
     QuestionsEntity questionsEntity;
     AnswersEntity answersEntity;
     ScoresEntity scoresEntity;
+    CompaniesEntity companiesEntity;
 
     private Connection getConnection(){
         if (connection == null){
@@ -33,7 +34,7 @@ public class TwService {
 
         this.connection = connection;
     }
-
+    // PeopleEntity
     protected PeopleEntity getPeopleEntity(){
         if(getConnection() != null){
             if(peopleEntity == null){
@@ -44,6 +45,7 @@ public class TwService {
         return peopleEntity;
     }
 
+    // CategoriesEntity
     protected CategoriesEntity getCategoriesEntity(){
         if(getConnection()!= null){
             if(categoriesEntity==null){
@@ -54,14 +56,31 @@ public class TwService {
         return categoriesEntity;
     }
 
-    public List<Person> findAllPeople(){
-        return getPeopleEntity() != null ? getPeopleEntity().findAll() : null;
+    protected  CompaniesEntity getCompaniesEntity(){
+        if(getConnection() != null){
+            if(companiesEntity == null) {
+                companiesEntity = new CompaniesEntity();
+                companiesEntity.setConnection((getConnection()));
+            }
+        }
+        return  companiesEntity;
     }
+
+    public List<Company> findAllCompanies() {
+        return getCompaniesEntity() != null ?
+                getCompaniesEntity().findAll() : null;
+    }
+
 
     public List<Category> findAllCategories(){
         return getCategoriesEntity() != null ? getCategoriesEntity().findAll() : null;
     }
 
+    public List<Person> findAllPeople(){
+        return (getPeopleEntity() != null &&
+                getCompaniesEntity() != null ?
+                getPeopleEntity().findAll(getCompaniesEntity()) : null);
+    }
     public Person findPersonById (int id){
         return getPeopleEntity() != null ?
                 getPeopleEntity().findById(id) : null;
