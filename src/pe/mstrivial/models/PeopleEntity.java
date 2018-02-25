@@ -8,27 +8,26 @@ import java.util.List;
 public class PeopleEntity extends BaseEntity{
     private static String DEFAULT_SQL= "SELECT * FROM trivial_world.people";
 
-    private List<Person> findByCriteria (String sql){
-        List<Person> people;
+    private List<Person> findByCriteria (String sql, CompaniesEntity companiesEntity){
+        List<Person> people = new ArrayList<>();
         if(getConnection() != null){
-            people = new ArrayList<>();
             try {
                 ResultSet resultSet = getConnection()
                         .createStatement()
                         .executeQuery(sql);
                 while (resultSet.next()) {
-                    Person person = new Person()
-                            .setId(resultSet.getInt("id"))
-                            .setCompanyId(resultSet.getInt("id_company"))
-                            .setFirstName(resultSet.getString("first_name"))
-                            .setLastNameP(resultSet.getString("last_name_p"))
-                            .setLastNameM(resultSet.getString("last_name_m"))
-                            .setCountry(resultSet.getString("country"))
-                            .setEmail(resultSet.getString("email"))
-                            .setUsername(resultSet.getString("username"))
-                            .setPassword(resultSet.getString("password"))
-                            .setCreateDate(resultSet.getDate("create_date"))
-                            .setModifyDate(resultSet.getDate("modify_create"));
+                    Person person = new Person(
+                            resultSet.getInt("id"),
+                            companiesEntity.findById(resultSet.getInt("id_company")),
+                            resultSet.getString("first_name"),
+                            resultSet.getString("last_name_p"),
+                            resultSet.getString("last_name_m"),
+                            resultSet.getString("country"),
+                            resultSet.getString("email"),
+                            resultSet.getString("username"),
+                            resultSet.getString("password"),
+                            resultSet.getDate("create_date"),
+                            resultSet.getDate("modify_create"));
                     people.add(person);
                 }
                 return people;
@@ -40,51 +39,50 @@ public class PeopleEntity extends BaseEntity{
         return null;
     }
 
-    public List<Person> findAll() {
+    public List<Person> findAll(CompaniesEntity companiesEntity) {
 
-        return findByCriteria(DEFAULT_SQL);
+        return findByCriteria(DEFAULT_SQL,companiesEntity);
     }
 
-    public Person findById(int id) {
+    public Person findById(int id, CompaniesEntity companiesEntity) {
         List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE id = "+ String.valueOf(id));
+                " WHERE id = "+ String.valueOf(id),companiesEntity);
         return (people != null ? people.get(0) : null);
     }
 
-    public Person findByIdCompany(int companyId) {
-        List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE id_company = '" + companyId+ "'");
-        return (people != null ? people.get(0) : null);
+    public List<Person> findByCompany(Company company, CompaniesEntity companiesEntity) {
+        String criteria = "company_id = " + company.getId();
+        return findByCriteria(criteria, companiesEntity);
     }
 
 
-    public Person findByFirstName(String firstName) {
+    public Person findByFirstName(String firstName, CompaniesEntity companiesEntity) {
         List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE first_name = '" + firstName+ "'");
+                " WHERE first_name = '" + firstName+ "'",companiesEntity);
         return (people != null ? people.get(0) : null);
     }
 
-    public Person findByLastNameP(String lastNameP) {
+    public Person findByLastNameP(String lastNameP, CompaniesEntity companiesEntity) {
         List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE last_name_p = '" + lastNameP+ "'");
+                " WHERE last_name_p = '" + lastNameP+ "'", companiesEntity);
         return (people != null ? people.get(0) : null);
     }
 
-    public Person findByLastNameM (String lastNameM) {
+    public Person findByLastNameM (String lastNameM, CompaniesEntity companiesEntity) {
         List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE last_name_m = '" + lastNameM+ "'");
+                " WHERE last_name_m = '" + lastNameM+ "'", companiesEntity);
         return (people != null ? people.get(0) : null);
     }
 
-    public Person findByCountry (String country) {
+    public Person findByCountry (String country, CompaniesEntity companiesEntity) {
         List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE country = '" +country+ "'");
+                " WHERE country = '" +country+ "'", companiesEntity);
         return (people != null ? people.get(0) : null);
     }
 
-    public Person findByEmail (String email) {
+    public Person findByEmail (String email, CompaniesEntity companiesEntity) {
         List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE email = '" +email+ "'");
+                " WHERE email = '" +email+ "'", companiesEntity);
         return (people != null ? people.get(0) : null);
     }
 
@@ -121,13 +119,13 @@ public class PeopleEntity extends BaseEntity{
         return 0;
     }
 
-    public Person create (int companyId, String firstName, String lastNameP, String lastNameM, String country, String email, String username,
-    String password, Date createDate, Date modifyDate){
-        if (findByEmail(email) == null){
+    public Person create (Company companyId, String firstName, String lastNameP, String lastNameM, String country, String email, String username,
+                          String password, Date createDate, Date modifyDate){
+        //if (findByEmail(email) == null){
             if (getConnection() != null) {
                 String sql = "INSERT INTO people (id, id_company, first_name, last_name_p, last_name_m,country, " +
                         "email,username,password,create_date, modify_date) VALUES ("+
-                        String.valueOf(getMaxId()+1)+", '"+firstName+"' , "+companyId+", '"+firstName+"' , '"+lastNameP+"' ,  '"+lastNameM+"' , '"+country+"' , '"+email+"' , '"+username+"' , '"+password+"' ,"+createDate+", "+modifyDate+")";
+                        String.valueOf(getMaxId()+1)+", '"+firstName+"' , "+companyId.getId()+", '"+firstName+"' , '"+lastNameP+"' ,  '"+lastNameM+"' , '"+country+"' , '"+email+"' , '"+username+"' , '"+password+"' ,"+createDate+", "+modifyDate+")";
                 int results = updateByCriteria(sql);
                 if (results > 0){
                     Person person = new Person(getMaxId(), companyId, firstName,lastNameP, lastNameM, country,email, username,
@@ -135,11 +133,12 @@ public class PeopleEntity extends BaseEntity{
                     return  person;
                 }
             }
-        }
+        //}
         return  null;
     }
 
-    public boolean updateFirstName (Person person){
+
+    public boolean updateFirstName (Person person, CompaniesEntity companiesEntity){
         if(findByFirstName(person.getFirstName()) != null) return false;
         return updateByCriteria(
                 "UPDATE people SET fist_name = '"+person.getFirstName()+"'"+

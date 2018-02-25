@@ -49,7 +49,7 @@ public class AnswersEntity extends BaseEntity {
         return (answers != null ? answers.get(0) : null);
     }
 
-    public Answer findByQuestionEntity(int QuestionEntity, QuestionsEntity questionsEntity) {
+    public Answer findByQuestionEntity(int questionEntity, QuestionsEntity questionsEntity) {
         List<Answer> answers = findByCriteria(DEFAULT_SQL +
                 " WHERE question_id = '" + questionsEntity+ "'", questionsEntity);
         return (answers != null ? answers.get(0) : null);
