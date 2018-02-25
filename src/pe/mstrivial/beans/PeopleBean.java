@@ -1,6 +1,7 @@
 package pe.mstrivial.beans;
 
 
+import pe.mstrivial.models.Company;
 import pe.mstrivial.models.Person;
 import pe.mstrivial.models.TwService;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public class PeopleBean implements Serializable {
     private TwService service;
     private Person person;
+    private Company company;
 
     public PeopleBean() {
 
@@ -26,6 +28,15 @@ public class PeopleBean implements Serializable {
         return service.findAllPeople();
     }
 
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     public Person getPerson() {
         return person;
     }
@@ -34,8 +45,8 @@ public class PeopleBean implements Serializable {
         this.person = person;
     }
 
-    public int getCompanyId(){
-        return this.getPerson().getCompanyId();
+    public int getId(){
+        return this.getCompany().getId();
     }
 
     public String getFirstName(){
@@ -75,7 +86,7 @@ public class PeopleBean implements Serializable {
     }
 
     public String createPerson(){
-        service.createPerson(this.getCompanyId(),this.getFirstName(),this.getLastNameP(),
+        service.createPerson(this.getCompany(),this.getFirstName(),this.getLastNameP(),
                 this.getLastNameM(),this.getCountry(),this.getEmail(),this.getUsername(),
                 this.getPassword(),this.getCreateDate(),this.getModifyDate());
         return "success";
@@ -92,7 +103,7 @@ public class PeopleBean implements Serializable {
     }
 
     public String updatePerson() {
-            service.updatePerson(this.getPerson());
+            service.updatePerson(this.getPerson(), this.getCompany());
             return "success";
     }
 

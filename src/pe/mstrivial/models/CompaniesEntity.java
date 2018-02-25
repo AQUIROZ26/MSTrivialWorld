@@ -49,6 +49,13 @@ public class CompaniesEntity extends BaseEntity{
         return (companies != null && !companies.isEmpty() ? companies.get(0) : null);
     }
 
+
+    public Company findByRuc(String ruc) {
+        List<Company> companies = findByCriteria(DEFAULT_SQL +
+                " WHERE ruc = '" + ruc + "'");
+        return (companies != null && !companies.isEmpty() ? companies.get(0) : null);
+    }
+
     private int updateByCriteria(String sql) {
         if(getConnection() != null) {
             try {
@@ -84,7 +91,7 @@ public class CompaniesEntity extends BaseEntity{
     }
 
     public Company create(String name, String ruc, Date createDate, Date modifyDate) {
-        if(findByName(name) == null) {
+        if(findByRuc(ruc) == null) {
             if(getConnection() != null) {
                 String sql = "INSERT INTO companies (id, name, ruc, create_date, modify_date) VALUES(" +
                         String.valueOf(getMaxId() + 1) + ", '" + name + "' , '"+ruc+"' ,"+createDate+", "+modifyDate+")";

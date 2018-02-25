@@ -66,6 +66,16 @@ public class TwService {
         return  companiesEntity;
     }
 
+    protected QuestionsEntity getQuestionsEntity(){
+        if(getConnection() != null){
+            if(questionsEntity == null){
+                questionsEntity = new QuestionsEntity();
+                questionsEntity.setConnection(getConnection());
+            }
+        }
+        return questionsEntity;
+    }
+
     public List<Company> findAllCompanies() {
         return getCompaniesEntity() != null ?
                 getCompaniesEntity().findAll() : null;
@@ -83,55 +93,52 @@ public class TwService {
     }
     public Person findPersonById (int id){
         return getPeopleEntity() != null ?
-                getPeopleEntity().findById(id) : null;
+                getPeopleEntity().findById(id,getCompaniesEntity()) : null;
     }
 
     public Person findPersonByFirstName (String firstName){
         return getPeopleEntity() != null ?
-                getPeopleEntity().findByFirstName(firstName) : null ;
+                getPeopleEntity().findByFirstName(firstName, getCompaniesEntity()) : null ;
     }
 
     public Person findPersonByLastNameP (String lastNameP){
         return getPeopleEntity() != null ?
-                getPeopleEntity().findByLastNameP(lastNameP) : null;
+                getPeopleEntity().findByLastNameP(lastNameP, getCompaniesEntity()) : null;
     }
 
     public  Person findPersonByLastNameM (String lastNameM){
         return  getPeopleEntity() != null ?
-                getPeopleEntity().findByLastNameM(lastNameM) : null;
+                getPeopleEntity().findByLastNameM(lastNameM, getCompaniesEntity()) : null;
     }
 
     public Person findPersonByEmail (String email){
         return  getPeopleEntity() != null ?
-                getPeopleEntity().findByEmail(email) : null;
+                getPeopleEntity().findByEmail(email, getCompaniesEntity()) : null;
     }
 
-    public  Person createPerson(int companyId, String firstName, String lastNameP, String lastNameM, String country,
+    public  Person createPerson(Company company, String firstName, String lastNameP, String lastNameM, String country,
                                 String email, String username,String password, Date createDate, Date modifyDate){
         return getPeopleEntity() != null ?
-                getPeopleEntity().create(companyId,firstName,lastNameP,lastNameM, country,
+                getPeopleEntity().create(company,firstName,lastNameP,lastNameM, country,
                         email, username,password,createDate,modifyDate) : null;
     }
+
+    //public Company createCompany(int id, String name, String ruc, Date createDate, Date modifyDate){
+      //  return getCompaniesEntity() != null ?
+        //        getCompaniesEntity().create(id,name,ruc,createDate,modifyDate) : null;
+    //}
 
     public boolean deletePerson(int id){
         return getPeopleEntity() != null ?
                 getPeopleEntity().delete(id) : false;
     }
 
-    public boolean updatePerson (Person person) {
+    public boolean updatePerson (Person person, CompaniesEntity companiesEntity) {
             return getPeopleEntity() != null ?
-                    getPeopleEntity().updateFirstName(person) : false;
+                    getPeopleEntity().updateFirstName(person, companiesEntity) : false;
     }
 
-    protected QuestionsEntity getQuestionsEntity(){
-        if(getConnection() != null){
-            if(questionsEntity == null){
-                questionsEntity = new QuestionsEntity();
-                questionsEntity.setConnection(getConnection());
-            }
-        }
-        return questionsEntity;
-    }
+
 
     public Question findQuestionByDescriptionQuestion (String descriptionQuestion){
         return getQuestionsEntity() != null ?
