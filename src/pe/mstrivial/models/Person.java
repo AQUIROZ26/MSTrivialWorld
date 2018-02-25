@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Person {
     private int id;
-    private int companyId;
+    private Company company;
     private String firstName;
     private String lastNameP;
     private String lastNameM;
@@ -17,12 +17,13 @@ public class Person {
     private Date createDate;
     private Date modifyDate;
 
+    public Person() {
 
+    }
 
-
-    public Person(int id, int companyId, String firstName, String lastNameP, String lastNameM, String country, String email, String username, String password, Date createDate, Date modifyDate) {
+    public Person(int id, Company company, String firstName, String lastNameP, String lastNameM, String country, String email, String username, String password, Date createDate, Date modifyDate) {
         this.setId(id);
-        this.setCompanyId(companyId);
+        this.setCompany(company);
         this.setFirstName(firstName);
         this.setLastNameP(lastNameP);
         this.setLastNameM(lastNameM);
@@ -35,11 +36,6 @@ public class Person {
     }
 
 
-    public Person() {
-
-    }
-
-
     public int getId() {
         return id;
     }
@@ -49,12 +45,12 @@ public class Person {
         return this;
     }
 
-    public int getCompanyId() {
-        return companyId;
+    public Company getCompany() {
+        return company;
     }
 
-    public Person setCompanyId(int companyId) {
-        this.companyId = companyId;
+    public Person setCompany(Company company) {
+        this.company = company;
         return this;
     }
 
@@ -138,6 +134,4 @@ public class Person {
         this.modifyDate = modifyDate;
         return this;
     }
-
-
 }
