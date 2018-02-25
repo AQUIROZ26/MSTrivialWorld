@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:outputLabel value="EDITAR USUARIO"/>
+    <h:form>
+        <h:outputLabel value="Nombre" for="nombre" />
+        <h:inputText id="nombre" value="#{peopleBean.person.firstName}"/>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Apellido Paterno" for="apellpater"/>
+        <h:inputText id="apellpater" value="#{peopleBean.person.lastNameP}"/>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Apellido Materno" for="apellmater"/>
+        <h:inputText id="apellmater" value="#{peopleBean.person.lastNameM}"/>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Pais de Origen" for="paisor"/>
+        <h:inputText id="paisor" value="#{peopleBean.person.country}"/>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Correo Electronico" for="correlec"/>
+        <h:inputText id="correlec" value="#{peopleBean.person.email}"/>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Usuario" for="user"/>
+        <h:inputText id="user" value="#{peopleBean.person.username}"/>
+        <br></br>
+        <br></br>
+        <h:outputLabel value="Contraseña" for="pass"/>
+        <h:inputText id="pass" value="#{peopleBean.person.password}"/>
+        <br></br>
+        <br></br>
+        <h:commandButton value="Actualizar Datos" action="#{peopleBean.updatePerson}"/>
+    </h:form>
+</f:view>
+</html>

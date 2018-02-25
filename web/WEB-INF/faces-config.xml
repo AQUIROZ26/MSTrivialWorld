@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
+        <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
             <to-view-id>/welcome.xhtml</to-view-id>
@@ -15,10 +15,25 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>/inicio.xhtml</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>success</from-outcome>
             <to-view-id>/newPerson.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/perfilUsuario.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{peopleBean.editPerson(person)}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/editPerson.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/editPerson.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>sucess</from-outcome>
+            <to-view-id>/perfilUsuario.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>

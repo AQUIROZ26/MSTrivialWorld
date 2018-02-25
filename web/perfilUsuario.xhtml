@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:form>
-    <h:outputLabel value="Perfil Ususario"/>
+    <h:outputLabel value="PERFIL USUARIO"/>
         <br></br>
         <br></br>
         <br></br>
@@ -32,7 +32,7 @@
     <h:outputLabel value="Contraseña:   #{peopleBean.person.password}" />
         <br></br>
         <br></br>
-    <h:commandButton value="Editar" action="#{peopleBean.editPerson(peopleBean)}"/>
+    <h:commandButton value="Editar" action="#{peopleBean.editPerson(person)}"/>
 
     </h:form>
 </f:view>
