@@ -27,7 +27,7 @@ public class Login implements Serializable {
     }
 
     public String doValidateInput(){
-        if (!"sample".equals(password))return "error";
+        if (!"abc123".equals(password))return "error";
         return "success";
     }
 }
