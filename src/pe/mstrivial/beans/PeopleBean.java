@@ -46,50 +46,85 @@ public class PeopleBean implements Serializable {
         this.person = person;
     }
 
-    // public int getId(){
-    //   return this.getCompany().getId();
+   // public int getId(){
+     //   return this.getCompany().getId();
     //}
 
-    public String getFirstName() {
+    public String getFirstName(){
         return this.getPerson().getFirstName();
     }
 
-    public String getLastNameP() {
+    public void setFirstName(String firstName){
+        this.getPerson().setFirstName(firstName);
+    }
+
+    public String getLastNameP(){
         return this.getPerson().getLastNameP();
     }
 
-    public String getLastNameM() {
+    public void setLastNameP(String lastNameP){
+        this.getPerson().setLastNameP(lastNameP);
+    }
+
+    public String getLastNameM(){
         return this.getPerson().getLastNameM();
     }
 
-    public String getCountry() {
+    public void setLastNameM(String lastNameM){
+        this.getPerson().setLastNameM(lastNameM);
+    }
+
+    public String getCountry(){
         return this.getPerson().getCountry();
     }
 
-    public String getEmail() {
+    public void setCountry(String country){
+        this.getPerson().setCountry(country);
+    }
+    public String getEmail(){
         return this.getPerson().getEmail();
     }
 
-    public String getUsername() {
+    public void setEmail(String email){
+        this.getPerson().setEmail(email);
+    }
+
+    public String getUsername(){
         return this.getPerson().getUsername();
     }
 
-    public String getPassword() {
+    public void setUsername(String username){
+        this.getPerson().setUsername(username);
+    }
+
+    public String getPassword(){
         return this.getPerson().getPassword();
     }
 
-    public Date getCreateDate() {
+    public void setPassword(String password){
+        this.getPerson().setPassword(password);
+    }
+
+    public Date getCreateDate(){
         return this.getPerson().getCreateDate();
     }
 
-    public Date getModifyDate() {
+    public void setCreateDate(Date createDate){
+        this.getPerson().setCreateDate(createDate);
+    }
+
+    public Date getModifyDate(){
         return this.getPerson().getModifyDate();
     }
 
-    public String createPerson() {
-        service.createPerson(this.getCompany(), this.getFirstName(), this.getLastNameP(),
-                this.getLastNameM(), this.getCountry(), this.getEmail(), this.getUsername(),
-                this.getPassword(), this.getCreateDate(), this.getModifyDate());
+    public void setModifyDate(Date modifyDate){
+        this.getPerson().setCreateDate(modifyDate);
+    }
+
+    public String createPerson(){
+        service.createPerson(this.getCompany(),this.getFirstName(),this.getLastNameP(),
+                this.getLastNameM(),this.getCountry(),this.getEmail(),this.getUsername(),
+                this.getPassword(),this.getCreateDate(),this.getModifyDate());
         return "success";
     }
 
@@ -103,9 +138,9 @@ public class PeopleBean implements Serializable {
         return "success";
     }
 
-    public String updatePerson(CompaniesEntity companiesEntity) {
-          service.updatePerson(this.getPerson(), companiesEntity);
-        return "success";
+    //public String updatePerson() {
+      //      service.updatePerson(this.getPerson());
+        //    return "success";
+    //}
 
-}
 }
