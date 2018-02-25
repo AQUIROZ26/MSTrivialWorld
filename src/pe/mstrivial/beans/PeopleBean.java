@@ -1,6 +1,7 @@
 package pe.mstrivial.beans;
 
 
+import pe.mstrivial.models.CompaniesEntity;
 import pe.mstrivial.models.Company;
 import pe.mstrivial.models.Person;
 import pe.mstrivial.models.TwService;
@@ -103,7 +104,7 @@ public class PeopleBean implements Serializable {
     }
 
     public String updatePerson() {
-            service.updatePerson(this.getPerson(), this.getCompany());
+            service.updatePerson(this.getPerson());
             return "success";
     }
 

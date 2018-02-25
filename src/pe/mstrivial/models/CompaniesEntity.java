@@ -105,7 +105,7 @@ public class CompaniesEntity extends BaseEntity{
         return null;
     }
 
-    public boolean update(Company company) {
+    public boolean updateName(Company company) {
         if(findByName(company.getName()) != null) return false;
         return updateByCriteria(
                 "UPDATE companies SET name = '" +

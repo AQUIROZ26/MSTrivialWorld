@@ -138,7 +138,15 @@ public class TwService {
                     getPeopleEntity().updateFirstName(person, companiesEntity) : false;
     }
 
+    public boolean deleteCompany(int id){
+        return getCompaniesEntity() != null ?
+                getCompaniesEntity().delete(id) : false;
+    }
 
+    public boolean updateCompany (Company company) {
+        return getCompaniesEntity() != null ?
+                getCompaniesEntity().updateName(company) : false;
+    }
 
     public Question findQuestionByDescriptionQuestion (String descriptionQuestion){
         return getQuestionsEntity() != null ?
@@ -180,14 +188,14 @@ public class TwService {
         return scoresEntity;
     }
 
-    public Score findScoreByVictory (int victory, PeopleEntity peopleEntity){
+    public Score findScoreByVictory (int victory, PeopleEntity peopleEntity, CompaniesEntity companiesEntity){
         return getScoresEntity() != null ?
-                getScoresEntity().findByVictory(victory, peopleEntity) : null;
+                getScoresEntity().findByVictory(victory, peopleEntity, companiesEntity) : null;
     }
 
     public Score findScoreByDefeat (int defeat, PeopleEntity peopleEntity){
         return getScoresEntity() != null ?
-                getScoresEntity().findByDefeat(defeat, peopleEntity) : null;
+                getScoresEntity().findByDefeat(defeat, peopleEntity, companiesEntity) : null;
     }
 
 
