@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ScoresEntity extends BaseEntity {
     private static String DEFAULT_SQL = "SELECT * FROM trivial_world.scores";
-    private List<Score> findByCriteria(String sql, PeopleEntity peopleEntity) {
+    private List<Score> findByCriteria(String sql, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
         List<Score> scores;
         if (getConnection() != null) {
             scores = new ArrayList<>();
@@ -18,7 +18,7 @@ public class ScoresEntity extends BaseEntity {
                 while (resultSet.next()) {
                     Score score = new Score(
                             resultSet.getInt("id"),
-                            peopleEntity.findById(resultSet.getInt("player_id")),
+                            peopleEntity.findById(resultSet.getInt("player_id"), companiesEntity),
                             resultSet.getInt("victories"),
                             resultSet.getInt("defeats"),
                             resultSet.getDate("create_date"),
@@ -34,33 +34,33 @@ public class ScoresEntity extends BaseEntity {
         return null;
     }
 
-    public List<Score> findAll(PeopleEntity peopleEntity) {
+    public List<Score> findAll(PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
 
-        return findByCriteria(DEFAULT_SQL,peopleEntity);
+        return findByCriteria(DEFAULT_SQL,peopleEntity, companiesEntity);
     }
 
-    public Score findById(int id, PeopleEntity peopleEntity) {
+    public Score findById(int id, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE id = " + String.valueOf(id), peopleEntity);
+                " WHERE id = " + String.valueOf(id), peopleEntity, companiesEntity);
         return (scores != null ? scores.get(0) : null);
     }
 
-    public Score findByPersonEntity(int PersonEntity, PeopleEntity peopleEntity) {
+    public Score findByPersonEntity(int PersonEntity, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE player_id = '" + peopleEntity + "'", peopleEntity);
+                " WHERE player_id = '" + peopleEntity + "'", peopleEntity, companiesEntity);
         return (scores != null ? scores.get(0) : null);
     }
 
 
-    public Score findByVictory(int victory, PeopleEntity peopleEntity) {
+    public Score findByVictory(int victory, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE victory = '" + victory + "'", peopleEntity);
+                " WHERE victory = '" + victory + "'", peopleEntity, companiesEntity);
         return (scores != null ? scores.get(0) : null);
     }
 
-    public Score findByDefeat(int defeat, PeopleEntity peopleEntity) {
+    public Score findByDefeat(int defeat, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE defeat = '" + defeat + "'", peopleEntity );
+                " WHERE defeat = '" + defeat + "'", peopleEntity, companiesEntity );
         return (scores != null ? scores.get(0) : null);
     }
 
