@@ -54,36 +54,71 @@ public class PeopleBean implements Serializable {
         return this.getPerson().getFirstName();
     }
 
+    public void setFirstName(String firstName){
+        this.getPerson().setFirstName(firstName);
+    }
+
     public String getLastNameP(){
         return this.getPerson().getLastNameP();
+    }
+
+    public void setLastNameP(String lastNameP){
+        this.getPerson().setLastNameP(lastNameP);
     }
 
     public String getLastNameM(){
         return this.getPerson().getLastNameM();
     }
 
+    public void setLastNameM(String lastNameM){
+        this.getPerson().setLastNameM(lastNameM);
+    }
+
     public String getCountry(){
         return this.getPerson().getCountry();
     }
 
+    public void setCountry(String country){
+        this.getPerson().setCountry(country);
+    }
     public String getEmail(){
         return this.getPerson().getEmail();
+    }
+
+    public void setEmail(String email){
+        this.getPerson().setEmail(email);
     }
 
     public String getUsername(){
         return this.getPerson().getUsername();
     }
 
+    public void setUsername(String username){
+        this.getPerson().setUsername(username);
+    }
+
     public String getPassword(){
         return this.getPerson().getPassword();
+    }
+
+    public void setPassword(String password){
+        this.getPerson().setPassword(password);
     }
 
     public Date getCreateDate(){
         return this.getPerson().getCreateDate();
     }
 
+    public void setCreateDate(Date createDate){
+        this.getPerson().setCreateDate(createDate);
+    }
+
     public Date getModifyDate(){
         return this.getPerson().getModifyDate();
+    }
+
+    public void setModifyDate(Date modifyDate){
+        this.getPerson().setCreateDate(modifyDate);
     }
 
     public String createPerson(){
