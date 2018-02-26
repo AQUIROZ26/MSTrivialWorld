@@ -8,38 +8,37 @@ import java.util.List;
 
 public class CompaniesEntity extends BaseEntity{
     private static String DEFAULT_SQL = "SELECT * FROM trivial_world.companies";
-    private List<Company> findByCriteria (String sql){
+    private List<Company> findByCriteria(String sql) {
         List<Company> companies;
-        if(getConnection() != null){
+        if(getConnection() != null) {
             companies = new ArrayList<>();
             try {
                 ResultSet resultSet = getConnection()
                         .createStatement()
                         .executeQuery(sql);
-                while  (resultSet.next()){
+                while (resultSet.next()) {
                     Company company = new Company()
                             .setId(resultSet.getInt("id"))
                             .setName(resultSet.getString("name"))
-                            .setRuc(resultSet.getString("ruc"))
-                            .setCreateDate(resultSet.getDate("create_date"))
-                            .setCreateDate(resultSet.getDate("modify_date"));
+                            .setRuc(resultSet.getString("ruc"));
                     companies.add(company);
                 }
                 return companies;
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
         return null;
+
     }
     public List<Company> findAll() {
-
         return findByCriteria(DEFAULT_SQL);
     }
 
     public Company findById(int id) {
         List<Company> companies = findByCriteria(DEFAULT_SQL +
-                " WHERE id = "+ String.valueOf(id));
+                " WHERE id= "+ String.valueOf(id));
         return (companies != null && !companies.isEmpty() ? companies.get(0) : null);
     }
 
@@ -49,10 +48,9 @@ public class CompaniesEntity extends BaseEntity{
         return (companies != null && !companies.isEmpty() ? companies.get(0) : null);
     }
 
-
     public Company findByRuc(String ruc) {
         List<Company> companies = findByCriteria(DEFAULT_SQL +
-                " WHERE ruc = '" + ruc + "'");
+                " WHERE ruc = '" + ruc+ "'");
         return (companies != null && !companies.isEmpty() ? companies.get(0) : null);
     }
 
@@ -90,14 +88,14 @@ public class CompaniesEntity extends BaseEntity{
         return 0;
     }
 
-    public Company create(String name, String ruc, Date createDate, Date modifyDate) {
-        if(findByRuc(ruc) == null) {
+    public Company create(String name, String ruc) {
+        if(findByName(name) == null) {
             if(getConnection() != null) {
-                String sql = "INSERT INTO companies (id, name, ruc, create_date, modify_date) VALUES(" +
-                        String.valueOf(getMaxId() + 1) + ", '" + name + "' , '"+ruc+"' ,"+createDate+", "+modifyDate+")";
+                String sql = "INSERT INTO companies (id, name, ruc) VALUES(" +
+                        String.valueOf(getMaxId() + 1) + ", '" + name + "', '"+ruc+"')";
                 int results = updateByCriteria(sql);
                 if(results > 0) {
-                    Company company = new Company(getMaxId(), name, ruc, createDate, modifyDate);
+                    Company company = new Company(getMaxId(), name, ruc);
                     return company;
                 }
             }
@@ -105,12 +103,12 @@ public class CompaniesEntity extends BaseEntity{
         return null;
     }
 
-    public boolean updateName(Company company) {
-        if(findByName(company.getName()) != null) return false;
+    public boolean update(Company company) {
+        if(findByName(company.getName()) != null && findByRuc(company.getRuc()) != null) return false;
         return updateByCriteria(
-                "UPDATE companies SET name = '" +
-                        company.getName() + "'" +
-                        " WHERE id= " +
-                        String.valueOf(company.getId())) > 0;
+                "UPDATE companies SET " +
+                        "name= '" + company.getName() + "' ," +
+                        "ruc= '"+company.getRuc()+"' "+
+                        " WHERE id= " + String.valueOf(company.getId())) > 0;
     }
 }

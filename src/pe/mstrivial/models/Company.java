@@ -3,23 +3,18 @@ package pe.mstrivial.models;
 import java.util.Date;
 
 public class Company {
-    private int     id;
     private String  name;
-    private String  ruc;
-    private Date    createDate;
-    private Date    modifyDate;
+    private int id;
+    private String ruc;
 
     public Company() {
     }
 
-    public Company(int id, String name, String ruc, Date createDate, Date modifyDate) {
+    public Company(int id, String name, String ruc) {
         this.id = id;
         this.name = name;
         this.ruc = ruc;
-        this.createDate = createDate;
-        this.modifyDate = modifyDate;
     }
-
 
     public int getId() {
         return id;
@@ -45,24 +40,6 @@ public class Company {
 
     public Company setRuc(String ruc) {
         this.ruc = ruc;
-        return this;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public Company setCreateDate(Date createDate) {
-        this.createDate = createDate;
-        return this;
-    }
-
-    public Date getModifyDate() {
-        return modifyDate;
-    }
-
-    public Company setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
         return this;
     }
 }

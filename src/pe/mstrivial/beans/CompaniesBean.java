@@ -13,16 +13,14 @@ import java.util.List;
 @Named
 @SessionScoped
 public class CompaniesBean implements Serializable {
-    private TwService service;
     private Company company;
+    private TwService service;
 
     public CompaniesBean() {
-
         service = new TwService();
     }
 
     public List<Company> getCompanies() {
-
         return service.findAllCompanies();
     }
 
@@ -34,27 +32,30 @@ public class CompaniesBean implements Serializable {
         this.company = company;
     }
 
-
-    public String getName(){
+    public String getName() {
         return this.getCompany().getName();
+    }
+
+    public void setName(String name) {
+
+        this.getCompany().setName(name);
     }
 
     public String getRuc(){
         return this.getCompany().getRuc();
     }
 
-
-    public Date getCreateDate(){
-        return this.getCompany().getCreateDate();
+    public void setRuc(String ruc){
+        this.getCompany().setRuc(ruc);
     }
 
-    public Date getModifyDate(){
-        return this.getCompany().getModifyDate();
+    public String newCompany() {
+        this.setCompany(new Company());
+        return "success";
     }
 
-    public String createCompany(){
-        service.createCompany(this.getName(),this.getRuc(),
-                this.getCreateDate(),this.getModifyDate());
+    public String createCompany() {
+        service.createCompany(this.getName(),this.getRuc());
         return "success";
     }
 
@@ -63,17 +64,14 @@ public class CompaniesBean implements Serializable {
         return "success";
     }
 
-    public String newCompany() {
-        this.setCompany(new Company());
-        return "success";
-    }
-
     public String updateCompany() {
         service.updateCompany(this.getCompany());
         return "success";
     }
 
-
+    public String deleteCompany(Company company) {
+        service.deleteCompany(company.getId());
+        return "success";
+    }
 
 }
-
