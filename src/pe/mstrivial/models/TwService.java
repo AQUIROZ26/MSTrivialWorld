@@ -87,10 +87,10 @@ public class TwService {
     }
 
     public Person createPerson(String firstName, String lastNameF, String lastNameM, String country,
-                               String email, String userName, String password, int company){
+                               String email, String userName, String password, Company company, CompaniesEntity companiesEntity){
         return getPeopleEntity() != null ?
                 getPeopleEntity().create(firstName, lastNameF, lastNameM, country,
-                        email, userName, password, companiesEntity) : null;
+                        email, userName, password, company, companiesEntity) : null;
     }
 
     public boolean deletePerson(int id){
