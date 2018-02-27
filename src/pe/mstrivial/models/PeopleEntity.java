@@ -6,19 +6,18 @@ import java.util.Date;
 import java.util.List;
 
 public class PeopleEntity extends BaseEntity{
-    private static String DEFAULT_SQL= "SELECT * FROM trivial_world.people";
-
-    private List<Person> findByCriteria (String sql, CompaniesEntity companiesEntity){
+    private static String DEFAULT_SQL = "SELECT * FROM people";
+    private Company company;
+    private List<Person> findByCriteria(String sql, CompaniesEntity companiesEntity) {
         List<Person> people = new ArrayList<>();
-        if(getConnection() != null){
+        if(getConnection() != null) {
             try {
                 ResultSet resultSet = getConnection()
                         .createStatement()
                         .executeQuery(sql);
-                while (resultSet.next()) {
+                while(resultSet.next()) {
                     Person person = new Person(
                             resultSet.getInt("id"),
-                            companiesEntity.findById(resultSet.getInt("id_company")),
                             resultSet.getString("first_name"),
                             resultSet.getString("last_name_p"),
                             resultSet.getString("last_name_m"),
@@ -26,68 +25,75 @@ public class PeopleEntity extends BaseEntity{
                             resultSet.getString("email"),
                             resultSet.getString("username"),
                             resultSet.getString("password"),
-                            resultSet.getDate("create_date"),
-                            resultSet.getDate("modify_create"));
+                            companiesEntity
+                                    .findById(resultSet
+                                            .getInt("company_id"))
+                    );
                     people.add(person);
                 }
                 return people;
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
         return null;
+
     }
 
     public List<Person> findAll(CompaniesEntity companiesEntity) {
-
-        return findByCriteria(DEFAULT_SQL,companiesEntity);
+        return findByCriteria(DEFAULT_SQL, companiesEntity);
     }
 
-    public Person findById(int id, CompaniesEntity companiesEntity) {
-        List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE id = "+ String.valueOf(id),companiesEntity);
-        return (people != null ? people.get(0) : null);
+    public Person findById (int id, CompaniesEntity companiesEntity){
+        List<Person> people = findByCriteria(DEFAULT_SQL+
+                " WHERE id = "+String.valueOf(id),companiesEntity);
+        return (people != null && !people.isEmpty() ? people.get(0) : null);
     }
 
-    public List<Person> findByCompany(Company company, CompaniesEntity companiesEntity) {
-        String criteria = "company_id = " + company.getId();
-        return findByCriteria(criteria, companiesEntity);
+    public Person findByFirstName (String firstName, CompaniesEntity companiesEntity){
+        List<Person> people = findByCriteria(DEFAULT_SQL+
+                " WHERE first_name = "+String.valueOf(firstName),companiesEntity);
+        return (people != null && !people.isEmpty() ? people.get(0) : null);
     }
 
-
-    public Person findByFirstName(String firstName, CompaniesEntity companiesEntity) {
-        List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE first_name = '" + firstName+ "'",companiesEntity);
-        return (people != null ? people.get(0) : null);
+    public Person findByLastNameF (String lastNameF, CompaniesEntity companiesEntity){
+        List<Person> people = findByCriteria(DEFAULT_SQL+
+                " WHERE last_name_p = "+String.valueOf(lastNameF),companiesEntity);
+        return (people != null && !people.isEmpty() ? people.get(0) : null);
     }
 
-    public Person findByLastNameP(String lastNameP, CompaniesEntity companiesEntity) {
-        List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE last_name_p = '" + lastNameP+ "'", companiesEntity);
-        return (people != null ? people.get(0) : null);
+    public Person findByLastNameM (String lastNameM, CompaniesEntity companiesEntity){
+        List<Person> people = findByCriteria(DEFAULT_SQL+
+                " WHERE last_name_m = "+String.valueOf(lastNameM),companiesEntity);
+        return (people != null && !people.isEmpty() ? people.get(0) : null);
     }
 
-    public Person findByLastNameM (String lastNameM, CompaniesEntity companiesEntity) {
-        List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE last_name_m = '" + lastNameM+ "'", companiesEntity);
-        return (people != null ? people.get(0) : null);
+    public Person findByCountry (String country, CompaniesEntity companiesEntity){
+        List<Person> people = findByCriteria(DEFAULT_SQL+
+                " WHERE country = "+String.valueOf(country),companiesEntity);
+        return (people != null && !people.isEmpty() ? people.get(0) : null);
     }
 
-    public Person findByCountry (String country, CompaniesEntity companiesEntity) {
-        List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE country = '" +country+ "'", companiesEntity);
-        return (people != null ? people.get(0) : null);
+    public Person findByEmail (String email, CompaniesEntity companiesEntity){
+        List<Person> people = findByCriteria(DEFAULT_SQL+
+                " WHERE email= "+String.valueOf(email),companiesEntity);
+        return (people != null && !people.isEmpty() ? people.get(0) : null);
     }
 
-    public Person findByEmail (String email, CompaniesEntity companiesEntity) {
-        List<Person> people = findByCriteria(DEFAULT_SQL +
-                " WHERE email = '" +email+ "'", companiesEntity);
-        return (people != null ? people.get(0) : null);
+    public Person findByUserName (String userName, CompaniesEntity companiesEntity){
+        List<Person> people = findByCriteria(DEFAULT_SQL+
+                " WHERE username= "+String.valueOf(userName),companiesEntity);
+        return (people != null && !people.isEmpty() ? people.get(0) : null);
+    }
+
+    public Person findByPassword (String password, CompaniesEntity companiesEntity){
+        List<Person> people = findByCriteria(DEFAULT_SQL+
+                " WHERE password= "+String.valueOf(password),companiesEntity);
+        return (people != null && !people.isEmpty() ? people.get(0) : null);
     }
 
     private int updateByCriteria(String sql) {
-        if (getConnection() != null) {
+        if(getConnection() != null) {
             try {
                 return getConnection()
                         .createStatement()
@@ -98,10 +104,10 @@ public class PeopleEntity extends BaseEntity{
         }
         return 0;
     }
-        public boolean delete(int id) {
-            return updateByCriteria("DELETE FROM people WHERE id = " + String.valueOf(id)) > 0;
-        }
 
+    public boolean delete(int id) {
+        return updateByCriteria("DELETE FROM companies WHERE id = " + String.valueOf(id)) > 0;
+    }
 
     private int getMaxId() {
         String sql = "SELECT MAX(id) AS max_id FROM people";
@@ -115,70 +121,57 @@ public class PeopleEntity extends BaseEntity{
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
         }
         return 0;
     }
 
-    public Person create (Company company, String firstName, String lastNameP, String lastNameM, String country, String email, String username,
-                          String password, Date createDate, Date modifyDate){
-        //if (findByEmail(email) == null){
-            if (getConnection() != null) {
-                String sql = "INSERT INTO people (id, id_company, first_name, last_name_p, last_name_m,country, " +
-                        "email,username,password,create_date, modify_date) VALUES ("+
-                        String.valueOf(getMaxId()+1)+", '"+firstName+"' , "+company.getId()+", '"+firstName+"' , '"+lastNameP+"' ,  '"+lastNameM+"' , '"+country+"' , '"+email+"' , '"+username+"' , '"+password+"' ,"+createDate+", "+modifyDate+")";
+    public Person create(String firstName, String lastNameF, String lastNameM, String country, String email,
+                         String userName, String password, CompaniesEntity companiesEntity) {
+        if(findByEmail(email, companiesEntity) == null) {
+            if(getConnection() != null) {
+                String sql = "INSERT INTO people (id, fist_name, last_name_p, last_name_m, " +
+                        "country, email, username, password, company_id) VALUES(" +
+                        String.valueOf(getMaxId() + 1) + ", '" + firstName + "', '"+lastNameF+"', '"+lastNameM+"', '" +
+                        country+"', '"+email+"', '"+userName+"', '"+password+"', "+companiesEntity+")";
                 int results = updateByCriteria(sql);
-                if (results > 0){
-                    Person person = new Person(getMaxId(), company, firstName,lastNameP, lastNameM, country,email, username,
-                            password, createDate, modifyDate);
-                    return  person;
+                if(results > 0) {
+                    Person person = new Person (getMaxId(), firstName, lastNameF, lastNameM, country, email,
+                            userName, password, company);
+                    return person;
                 }
             }
-        //}
-        return  null;
+        }
+        return null;
     }
 
-
-    public boolean updateFirstName (Person person, CompaniesEntity companiesEntity){
-        if(findByFirstName(person.getFirstName(),companiesEntity) != null) return false;
+    public boolean update(Person person, CompaniesEntity companiesEntity) {
+        if(findByFirstName(person.getFirstName(), companiesEntity) !=null &&
+                findByLastNameF(person.getLastNameF(),companiesEntity) != null &&
+                findByLastNameM(person.getLastNameM(),companiesEntity) != null &&
+                findByCountry(person.getCountry(),companiesEntity)!=null &&
+                findByEmail(person.getEmail(),companiesEntity) !=null &&
+                findByUserName(person.getUserName(),companiesEntity) != null &&
+                findByPassword(person.getPassword(),companiesEntity) != null) return false;
         return updateByCriteria(
-                "UPDATE people SET fist_name = '"+person.getFirstName()+"'"+
-                        "WHERE id="+String.valueOf(person.getId())) > 0;
+                "UPDATE people SET " +
+                        "first_name= '" +person.getFirstName()+ "' ," +
+                        "last_name_p '= '"+person.getLastNameF()+"' "+
+                        "last_name_m '" +person.getLastNameM()+ "' ," +
+                        "email= '" + person.getEmail() + "' ," +
+                        "country= '" + person.getCountry() + "' ," +
+                        "username= '" + person.getUserName() + "' ," +
+                        "password= '" + person.getPassword() + "' ," +
+                        "company_id= '" + person.getCompany() + "' ," +
+                        " WHERE id= " + String.valueOf(person.getId())) > 0;
     }
 
 
-    public boolean updateLastNameP (Person person, CompaniesEntity companiesEntity){
-        if(findByLastNameP(person.getLastNameP(),companiesEntity) != null) return false;
-        return updateByCriteria(
-                "UPDATE people SET last_name_p= '"+person.getLastNameP()+"'"+
-                        "WHERE id="+String.valueOf(person.getId())) > 0;
+    public Company getCompany() {
+        return company;
     }
 
-    public boolean updateLastNameM (Person person, CompaniesEntity companiesEntity){
-        if(findByLastNameM(person.getLastNameM(), companiesEntity) != null) return false;
-        return updateByCriteria(
-                "UPDATE people SET last_name_m= '"+person.getLastNameM()+"'"+
-                        "WHERE id="+String.valueOf(person.getId())) > 0;
+    public void setCompany(Company company) {
+        this.company = company;
     }
-
-    public boolean updateCountry(Person person, CompaniesEntity companiesEntity){
-        if(findByCountry(person.getCountry(), companiesEntity) != null) return false;
-        return updateByCriteria(
-                "UPDATE people SET country= '"+person.getCountry()+"'"+
-                        "WHERE id="+String.valueOf(person.getId())) > 0;
-    }
-
-    public boolean updateEmail (Person person, CompaniesEntity companiesEntity){
-        if(findByEmail(person.getEmail(), companiesEntity) != null) return false;
-        return updateByCriteria(
-                "UPDATE people SET email= '"+person.getEmail()+"'"+
-                        "WHERE id="+String.valueOf(person.getId())) > 0;
-    }
-
-    public boolean updatePassword (Person person, CompaniesEntity companiesEntity){
-        return updateByCriteria(
-                "UPDATE people SET password= '"+person.getPassword()+"'"+
-                        "WHERE id="+String.valueOf(person.getId())) > 0;
-    }
-
-
 }

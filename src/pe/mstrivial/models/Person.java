@@ -6,35 +6,29 @@ import java.util.Date;
 
 public class Person {
     private int id;
-    private Company company;
     private String firstName;
-    private String lastNameP;
+    private String lastNameF;
     private String lastNameM;
     private String country;
     private String email;
-    private String username;
+    private String userName;
     private String password;
-    private Date createDate;
-    private Date modifyDate;
+    private Company company;
 
     public Person() {
-
     }
 
-    public Person(int id, Company company, String firstName, String lastNameP, String lastNameM, String country, String email, String username, String password, Date createDate, Date modifyDate) {
+    public Person(int id, String firstName, String lastNameF, String lastNameM, String country, String email, String userName, String password, Company company) {
         this.id = id;
-        this.company = company;
         this.firstName = firstName;
-        this.lastNameP = lastNameP;
+        this.lastNameF = lastNameF;
         this.lastNameM = lastNameM;
         this.country = country;
         this.email = email;
-        this.username = username;
+        this.userName = userName;
         this.password = password;
-        this.createDate = createDate;
-        this.modifyDate = modifyDate;
+        this.company = company;
     }
-
 
     public int getId() {
         return id;
@@ -42,15 +36,6 @@ public class Person {
 
     public Person setId(int id) {
         this.id = id;
-        return this;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public Person setCompany(Company company) {
-        this.company = company;
         return this;
     }
 
@@ -63,12 +48,12 @@ public class Person {
         return this;
     }
 
-    public String getLastNameP() {
-        return lastNameP;
+    public String getLastNameF() {
+        return lastNameF;
     }
 
-    public Person setLastNameP(String lastNameP) {
-        this.lastNameP = lastNameP;
+    public Person setLastNameF(String lastNameF) {
+        this.lastNameF = lastNameF;
         return this;
     }
 
@@ -85,9 +70,8 @@ public class Person {
         return country;
     }
 
-    public Person setCountry(String country) {
+    public void setCountry(String country) {
         this.country = country;
-        return this;
     }
 
     public String getEmail() {
@@ -99,12 +83,12 @@ public class Person {
         return this;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public Person setUsername(String username) {
-        this.username = username;
+    public Person setUserName(String userName) {
+        this.userName = userName;
         return this;
     }
 
@@ -117,21 +101,13 @@ public class Person {
         return this;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Company getCompany() {
+        return company;
     }
 
-    public Person setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public Person setCompany(Company company) {
+        this.company = company;
         return this;
     }
 
-    public Date getModifyDate() {
-        return modifyDate;
-    }
-
-    public Person setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
-        return this;
-    }
 }
