@@ -127,13 +127,15 @@ public class PeopleEntity extends BaseEntity{
     }
 
     public Person create(String firstName, String lastNameF, String lastNameM, String country, String email,
-                         String userName, String password, CompaniesEntity companiesEntity) {
-        if(findByEmail(email, companiesEntity) == null) {
+                         String userName, String password, Company company,CompaniesEntity companiesEntity) {
+        if(findByFirstName(firstName, companiesEntity) == null &&
+                findByLastNameF(lastNameF,companiesEntity)==null&&
+                findByLastNameM(lastNameM,companiesEntity)==null) {
             if(getConnection() != null) {
-                String sql = "INSERT INTO people (id, fist_name, last_name_p, last_name_m, " +
+                String sql = "INSERT INTO people (id, first_name, last_name_p, last_name_m, " +
                         "country, email, username, password, company_id) VALUES(" +
                         String.valueOf(getMaxId() + 1) + ", '" + firstName + "', '"+lastNameF+"', '"+lastNameM+"', '" +
-                        country+"', '"+email+"', '"+userName+"', '"+password+"', "+companiesEntity+")";
+                        country+"', '"+email+"', '"+userName+"', '"+password+"', "+company+")";
                 int results = updateByCriteria(sql);
                 if(results > 0) {
                     Person person = new Person (getMaxId(), firstName, lastNameF, lastNameM, country, email,

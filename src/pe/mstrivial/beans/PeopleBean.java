@@ -13,9 +13,10 @@ import java.util.List;
 @Named
 @SessionScoped
 public class PeopleBean implements Serializable{
-    private Person person;
+    private Person person = new Person();
     TwService service;
     private Company company;
+    private CompaniesEntity companiesEntity;
 
     public PeopleBean() {
         service = new TwService();
@@ -104,7 +105,7 @@ public class PeopleBean implements Serializable{
 
     public String createPerson(){
         service.createPerson(this.getFirstName(),this.getLastNameF(),this.getLastNameM(),
-                this.getCountry(),this.getEmail(),this.getUserName(),this.getPassword(), this.getCompany().getId());
+                this.getCountry(),this.getEmail(),this.getUserName(),this.getPassword(), this.getCompany(), this.companiesEntity);
         return "success";
     }
 
@@ -124,4 +125,11 @@ public class PeopleBean implements Serializable{
     }
 
 
+    public CompaniesEntity getCompaniesEntity() {
+        return companiesEntity;
+    }
+
+    public void setCompaniesEntity(CompaniesEntity companiesEntity) {
+        this.companiesEntity = companiesEntity;
+    }
 }
