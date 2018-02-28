@@ -5,6 +5,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
 <f:view>
     <h:form>
         <h:outputLabel value="Nombre" for="firstName"/>
@@ -27,20 +30,16 @@
         <br></br>
         <br></br>
         <br></br>
-        <h:outputLabel value="Nombre de Usuario" for="username"/>
-        <h:inputText value="#{peopleBean.userName}" id="username"/>
-        <br></br>
-        <br></br>
-        <br></br>
         <h:outputLabel value="Correo Electronico" for="email"/>
         <h:inputText value="#{peopleBean.email}" id="email"/>
         <br></br>
         <br></br>
         <br></br>
-        <!--<h:outputLabel value="Cormpany" for=""/>
-        <h:inputText value="#{peopleBean.person.email}" id="email"/>
+        <h:outputLabel value="Nombre de Usuario" for="username"/>
+        <h:inputText value="#{peopleBean.userName}" id="username"/>
         <br></br>
-        <br></br>-->
+        <br></br>
+        <br></br>
         <h:outputLabel value="Contraseña" for="password"/>
         <h:inputSecret value="#{peopleBean.password}" id="password"/>
         <br></br>

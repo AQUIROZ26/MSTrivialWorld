@@ -11,25 +11,25 @@
         <br></br>
         <br></br>
         <br></br>
-    <h:outputLabel value="Nombre:  #{peopleBean.person.firstName} "/>
+    <h:inputText value="#{peopleBean.firstName} "/>
         <br></br>
         <br></br>
-    <h:outputLabel value="Apellido Paterno:  #{peopleBean.person.lastNameP}" />
+    <h:outputLabel value="Apellido Paterno:  #{peopleBean.lastNameF}" />
         <br></br>
         <br></br>
-    <h:outputLabel value="Apellido Materno:  #{peopleBean.person.lastNameM}" />
+    <h:outputLabel value="Apellido Materno:  #{peopleBean.lastNameM}" />
         <br></br>
         <br></br>
-    <h:outputLabel value="Pais de Origen:   #{peopleBean.person.country}" />
+    <h:outputLabel value="Pais de Origen:   #{peopleBean.country}" />
         <br></br>
         <br></br>
-        <h:outputLabel value="Correo Electronico:   #{peopleBean.person.email}" />
+        <h:outputLabel value="Correo Electronico:   #{peopleBean.email}" />
         <br></br>
         <br></br>
-    <h:outputLabel value="Usuario:   #{peopleBean.person.username} " />
+    <h:outputLabel value="Usuario:   #{peopleBean.userName} " />
         <br></br>
         <br></br>
-    <h:outputLabel value="Contraseña:   #{peopleBean.person.password}" />
+    <h:outputLabel value="Contraseña:   #{peopleBean.password}" />
         <br></br>
         <br></br>
     <h:commandButton value="Editar" action="#{peopleBean.editPerson(person)}"/>
