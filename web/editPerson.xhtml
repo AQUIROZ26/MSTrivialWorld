@@ -4,16 +4,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="application/javascript"/>
+
+</head>
 <f:view>
     <h:outputLabel value="EDITAR USUARIO"/>
     <h:form>
-        <h:outputLabel value="Nombre" for="firstName"/>
+        <h:outputLabel  for="firstName"/>
         <h:inputText id="firstName" value="#{peopleBean.firstName}"/>
         <br></br>
         <br></br>
         <h:outputLabel value="Apellido Paterno" for="lastNameP"/>
-        <h:inputText id="lastNameP" value="#{peopleBean.lastNameP}"/>
+        <h:inputText id="lastNameP" value="#{peopleBean.lastNameF}"/>
         <br></br>
         <br></br>
         <h:outputLabel value="Apellido Materno" for="lastNameM"/>
@@ -29,7 +42,7 @@
         <br></br>
         <br></br>
         <h:outputLabel value="Usuario" for="username"/>
-        <h:inputText id="username" value="#{peopleBean.username}"/>
+        <h:inputText id="username" value="#{peopleBean.userName}"/>
         <br></br>
         <br></br>
         <h:outputLabel value="Contraseña" for="password"/>

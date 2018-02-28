@@ -4,49 +4,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="application/javascript"/>
+
+</head>
+
+
+
 <f:view>
     <h:form>
         <h:outputLabel value="Nombre" for="firstName"/>
-        <h:inputText value="#{peopleBean.firstName}" id="firstName"/>
-        <br></br>
-        <br></br>
-        <br></br>
+        <b:inputText value="#{peopleBean.firstName}" id="firstName"/>
         <h:outputLabel value="Apellido Paterno" for="lastNameP"/>
-        <h:inputText value="#{peopleBean.lastNameF}" id="lastNameP"/>
-        <br></br>
-        <br></br>
-        <br></br>
+        <b:inputText value="#{peopleBean.lastNameF}" id="lastNameP"/>
         <h:outputLabel value="Apellido Materno" for="lastNameM"/>
-        <h:inputText value="#{peopleBean.lastNameM}" id="lastNameM"/>
-        <br></br>
-        <br></br>
-        <br></br>
+        <b:inputText value="#{peopleBean.lastNameM}" id="lastNameM"/>
         <h:outputLabel value="Pais" for="country"/>
-        <h:inputText value="#{peopleBean.country}" id="country"/>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h:outputLabel value="Nombre de Usuario" for="username"/>
-        <h:inputText value="#{peopleBean.userName}" id="username"/>
-        <br></br>
-        <br></br>
-        <br></br>
+        <b:inputText value="#{peopleBean.country}" id="country"/>
         <h:outputLabel value="Correo Electronico" for="email"/>
-        <h:inputText value="#{peopleBean.email}" id="email"/>
-        <br></br>
-        <br></br>
-        <br></br>
-        <!--<h:outputLabel value="Cormpany" for=""/>
-        <h:inputText value="#{peopleBean.person.email}" id="email"/>
-        <br></br>
-        <br></br>-->
+        <b:inputText value="#{peopleBean.email}" id="email"/>
+        <h:outputLabel value="Nombre de Usuario" for="username"/>
+        <b:inputText value="#{peopleBean.userName}" id="username"/>
         <h:outputLabel value="Contraseña" for="password"/>
-        <h:inputSecret value="#{peopleBean.password}" id="password"/>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h:commandButton id="registroButton"
+        <b:inputSecret value="#{peopleBean.password}" id="password"/>
+        <b:commandButton id="registroButton"
                          value="Registrar"
                          action="#{peopleBean.createPerson}"/>
     </h:form>

@@ -13,7 +13,7 @@ import java.util.List;
 @Named
 @SessionScoped
 public class CompaniesBean implements Serializable {
-    private Company company;
+    private Company company = new Company();
     private TwService service;
 
     public CompaniesBean() {
