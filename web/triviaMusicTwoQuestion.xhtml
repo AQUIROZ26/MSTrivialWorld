@@ -20,30 +20,36 @@
 
 </h:head>
 
-<h:body class="make-flex">
-    <h2>Trivias 10/10</h2>
-    <br></br>
-    <h1>00:00:34</h1>
+<h:body >
+    <!--RESET & POINTS-->
+    <div class="pointsDisplay">
 
-    <h3>¿En qué año nacio Michael Jackson?</h3><td></td>>
-    <a title="CIBERTEC" href="https://www.cibertec.edu.pe/" target="_blank"><img src="imagenes/cibertec.jpg" alt="CIBERTEC" width="100" height="100"/></a>
-    <a title="ICPNA" href="https://www.icpna.edu.pe/" target="_blank"><img src="imagenes/icpna.jpg" alt="ICPNA" width="100" height="100"/></a>
+        <h:form>
+            <a><b:commandButton value="Atras" action="triviaMusicOneQuestion"/></a>
+            <a><b:commandButton value="Abandonar juego" action="salaMusic"/></a>
+        </h:form>
+        <br></br>
+        <a title="CIBERTEC" href="https://www.cibertec.edu.pe/" target="_blank"><img src="imagenes/cibertec.jpg" alt="CIBERTEC" width="100" height="100"/></a>
+        <a title="ICPNA" href="https://www.icpna.edu.pe/" target="_blank"><img src="imagenes/icpna.jpg" alt="ICPNA" width="100" height="100"/></a>
 
-    <div class="container twidth make-flex">
-        <p id="question"></p>
-        <div class="optnContainer make-flex">
-            <p id="1958" class="answer">1)      1958</p>
-            <p id="1962" class="answer">2)      1962</p>
-            <p id="1970" class="answer">3)      1970</p>
-            <p id="1965" class="answer">4)      1965</p>
-            <div id="waiting"></div>
-            <div id="waitanim"></div>
-        </div>
     </div>
-    <br></br>
-    <br></br>
-    <a><b:commandButton value="Atras" action="triviaMusicOneQuestion"/></a>
-    <a><b:commandButton value="Terminar" action="salaMusic"/></a>
+
+    <!--TRIVIA BOX-->
+    <div class="category">
+        <span id="questionNum">Trivias Música 1/2</span>
+        <br></br>
+        <span id="category"></span>
+    </div>
+    <div class="wrapper">
+        <div id="question">  <h3>¿En qué año nacio Michael Jackson?</h3></div>
+        <ul id="answers">
+            <li>1)  1958</li>
+            <li>2)  1962</li>
+            <li>3)  1970</li>
+            <li>4)  1965</li>
+        </ul>
+    </div>
+
 
 
 </h:body>

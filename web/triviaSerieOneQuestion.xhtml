@@ -20,30 +20,36 @@
 
 </h:head>
 
-<h:body class="make-flex">
-    <h2>Trivias 1/10</h2>
-    <br></br>
-    <h1>00:00:34</h1>
+<h:body >
+    <!--RESET & POINTS-->
+    <div class="pointsDisplay">
 
-    <h3>¿Que ojo pierde el personaje conocido como El Gobernador en The Walking Dead?</h3><td></td>>
-    <a title="CIBERTEC" href="https://www.cibertec.edu.pe/" target="_blank"><img src="imagenes/cibertec.jpg" alt="CIBERTEC" width="100" height="100"/></a>
-    <a title="ICPNA" href="https://www.icpna.edu.pe/" target="_blank"><img src="imagenes/icpna.jpg" alt="ICPNA" width="100" height="100"/></a>
+        <h:form>
+            <a><b:commandButton value="Abandonar juego" action="salaSerie"/></a>
+            <a><b:commandButton value="Siguiente" action="triviaSerieTwoQuestion"/></a>
+        </h:form>
+        <br></br>
+        <a title="CIBERTEC" href="https://www.cibertec.edu.pe/" target="_blank"><img src="imagenes/cibertec.jpg" alt="CIBERTEC" width="100" height="100"/></a>
+        <a title="ICPNA" href="https://www.icpna.edu.pe/" target="_blank"><img src="imagenes/icpna.jpg" alt="ICPNA" width="100" height="100"/></a>
 
-    <div class="container twidth make-flex">
-        <p id="question"></p>
-        <div class="optnContainer make-flex">
-            <p id="Izquierdo" class="answer">1)     Izquierdo</p>
-            <p id="Derecho" class="answer">2)       Derecho</p>
-            <p id="Los dos" class="answer">3)       Los dos</p>
-            <p id="No pierde ninguno" class="answer">4)     No pierde ninguno</p>
-            <div id="waiting"></div>
-            <div id="waitanim"></div>
-        </div>
     </div>
-    <br></br>
-    <br></br>
-    <a><b:commandButton value="Terminar" action="salaSerie"/></a>
-    <a><b:commandButton value="Siguiente" action="triviaSerieTwoQuestion"/></a>
+
+    <!--TRIVIA BOX-->
+    <div class="category">
+        <span id="questionNum">Trivias Serie 1/1</span>
+        <br></br>
+        <span id="category"></span>
+    </div>
+    <div class="wrapper">
+        <div id="question">  <h3>¿Qué ojo perdió el personaje conocido como el gobernador en "The Walking Dead"?</h3></div>
+        <ul id="answers">
+            <li>1)  El izquierdo</li>
+            <li>2)  El derecho</li>
+            <li>3)  Los dos</li>
+            <li>4)  No pierde ninguno</li>
+        </ul>
+    </div>
+
 
 
 </h:body>

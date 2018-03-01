@@ -1,216 +1,108 @@
-  @import url('https://fonts.googleapis.com/css?family=Libre+Franklin:400,700,900');
-*{
-	padding: 0;
-	margin: 0;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
-}
-body{
-	font-family: 'Libre Franklin', sans-serif;
-	background: #F2F2F2;
-}
-.make-flex{
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	    -ms-flex-direction: column;
-	        flex-direction: column;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
-	-webkit-box-align: center;
-	    -ms-flex-align: center;
-	        align-items: center;
-}
-.twidth{
-	max-width: 600px;
-	width: 100%;
+body {
+    background: #2c3e50;
+    font-family: sans-serif;
 }
 
-.container{
-	background: white;
-	margin: 0 auto;
-	text-align: center;
-}
-h2{
-	color: #3E333F;
-	font-weight: 900;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	margin: 5rem 0 3rem 0;
-	text-align: center;
-}
-#question{
-	color: #2D6E7E;
-	min-height: 66px;
-	font-size: 1.3rem;
-	font-weight: 700;
-	letter-spacing: 2px;
-	margin-bottom: 1rem;
-	padding: .5rem;
-}
-.optnContainer{
-	position: relative;
-	-webkit-box-align: stretch;
-	    -ms-flex-align: stretch;
-	        align-items: stretch;
-	width: 100%;
-}
-.answer{
-	color: #F2F2F2;
-	background: #153B44;
-	-webkit-box-flex: 1;
-	    -ms-flex-positive: 1;
-	        flex-grow: 1;
-	min-height: 51px;
-	padding: 1rem;
-	letter-spacing: 2px;
-	margin-top: 3px;
-	-webkit-transition: background 300ms;
-	-o-transition: background 300ms;
-	transition: background 300ms;
-}
-.answer:hover{
-	cursor: pointer;
-}
-.incorrect{
-	background: #CF1B1B;
-}
-.correct{
-	background: #04a569;
-}
-.score{
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	    -ms-flex-direction: row;
-	        flex-direction: row;
-	-webkit-box-align: stretch;
-	    -ms-flex-align: stretch;
-	        align-items: stretch;
-	margin-top: 2rem;
-}
-.score p{
-	text-align: center;
-	padding: .8rem;
-	width: 50%;
-	color: white;
-	letter-spacing: 5px;
-}
-#resetscore{
-	background: #295F4E;
-	-webkit-transition-duration: 300ms;
-	     -o-transition-duration: 300ms;
-	        transition-duration: 300ms;
-}
-#resetscore:hover{
-	background: #194235;
-	cursor: pointer;
-}
-#hscore{
-	font-weight: 900;
-	background: #6DB193;
-}
-#skip{
-	padding: .8rem;
-	margin-top: 3px;
-	background: #ff4f02;
-	color: white;
-	text-align: center;
-	-webkit-transition-duration: 300ms;
-	     -o-transition-duration: 300ms;
-	        transition-duration: 300ms;
-}
-#skip:hover{
-	background: #c43b00;
-	cursor: pointer;
-}
-small{
-	margin: 3rem 0 5rem 0;
-	font-size: 12px;
-	font-weight: 900;
-	color: #232323;
-}
-.loading{
-	position: absolute;
-	background: white;
-	opacity: .3;
-	height: 100%;
-	width: 100%;
-	z-index: 99;
-}
-@-webkit-keyframes loadingicon{
-	from{
-		-webkit-transform: rotate(0deg);
-		        transform: rotate(0deg);
-	}
-	to{
-		-webkit-transform: rotate(360deg);
-		        transform: rotate(360deg);
-	}
-}
-@keyframes loadingicon{
-	from{
-		-webkit-transform: rotate(0deg);
-		        transform: rotate(0deg);
-	}
-	to{
-		-webkit-transform: rotate(360deg);
-		        transform: rotate(360deg);
-	}
-}
-.animation{
-	position: absolute;
-	top: 41%;
-	left: 46%;
-	width: 40px;
-	height: 40px;
-	opacity: 1;
-	border-top: 5px solid #232323; 
-	border-bottom: 5px solid #232323;
-	border-right: 5px solid rgba(255,255,255,0); 
-	border-left: 5px solid rgba(255,255,255,0); 
-	border-radius: 50%;
-	z-index: 100;
-	-webkit-animation-name: loadingicon;
-	        animation-name: loadingicon;
-	-webkit-animation-duration: 400ms;
-	        animation-duration: 400ms;
-	-webkit-animation-timing-function: linear;
-	        animation-timing-function: linear;
-	-webkit-animation-delay: 0;
-	        animation-delay: 0;
-	-webkit-animation-iteration-count: infinite;
-	        animation-iteration-count: infinite;
+/*TOP SECT*/
+.pointsDisplay {
+    padding: 10px;
+    text-align: right;
+    font-weight: bold;
+    color: #ecf0f1;
 }
 
-  .tbutton {
-	  border: 0;
-	  background-color: #3498db;
-	  color: white;
-	  border-radius: 4px;
-	  padding: 5px 10px;
-	  transition: background-color 0.2s ease-out;
+.pointsDisplay section {
+    padding: 10px;
+}
 
+#restart {
+    border: none;
+    background: #34495e;
+    color: #ecf0f1;
+    padding: 10px;
+    border-radius: 20px;
+    float: left;
+    transition: all 0.1s ease-in;
+}
 
-	  cursor: pointer;
-  }
-  .h1 {
-	  color: #3498db;
-  }
+#restart:hover {
+    cursor: pointer;
+    background: #16a085;
+}
 
-  .h2 {
-	  color: #2980b9;
-	  margin-top: 0;
-	  font-size: 20px;
-	  background-color: white;
-	  height: 24px;
-	  text-align: center;
-	  padding: 16px;
-	  z-index: 15;
-	  border-radius: 4px;
+#restart:focus {
+    outline: none;
+}
 
-	  transition: all 2s ease-out;
-  }
-  
+/*TRIVIA BOX*/
+.category {
+    position: relative;
+    margin: 75px auto 0 auto;
+    padding: 15px;
+    max-width: 500px;
+    color: #2c3e50;
+    font-size: 18px;
+    text-align: center;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px 10px 0 0;
+}
+
+.wrapper {
+    margin: 0 auto;
+    padding: 15px;
+    background: #34495e;
+    max-width: 500px;
+    min-height: 100px;
+    border-radius: 3px;
+    overflow: auto;
+}
+
+#questionNum {
+    position: absolute;
+    left: 10px;
+}
+
+#question {
+    color: #ecf0f1;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 20px 0
+}
+
+#answers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#answers li {
+    float: left;
+    background: #ecf0f1;
+    color: #333;
+    font-weight: 600;
+    padding: 10px;
+    width: 45%;
+    margin: 10px 2.5%;
+    text-align: center;
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: all 0.1s ease-in;
+}
+
+#answers li:hover {
+    transform: scale(1.02);
+    background: #16a085;
+    color: #ecf0f1;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+
+    #answers li {
+        float: none;
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+}
