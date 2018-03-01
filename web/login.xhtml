@@ -18,36 +18,43 @@
     <link href="css/login.css" rel="stylesheet"/>
 
 </head>
-<f:view>
-    <h:messages/>
-    <h:form>
-        <h:outputLabel value="User Name" for="userName"/>
-        <b:inputText value="#{login.userName}" id="userName"
-                     validatorMessage="Please name must have between 4 and 16 characters"
-                     required="true"
-                     requiredMessage="User name cannot be blank">
-            <f:validateLength minimum="4" maximum="16" for="userName"/>
-            <br></br>
-            <br></br>
-            <br></br>
-        </b:inputText>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h:outputLabel value="Password" for="password"/>
-        <b:inputSecret value="#{login.password}" id="password"
-                       validatorMessage="Please password must have between 4 and 16 characters"
-                       required="true"
-                       requiredMessage="Password cannot be blank">
-            <f:validateLength minimum="4" maximum="16" for="password"/>
-        </b:inputSecret>
-        <br></br>
-        <br></br>
-        <br></br>
-        <b:commandButton id="loginButton"
-                         value="Login"
-                         action="#{login.doValidateInput}"/>
 
-    </h:form>
-</f:view>
+<body>
+<div class="container">
+    <div id="signup">
+        <div class="signup-screen">
+            <div class="space-bot text-center">
+                <h1>INICIO USUARIO</h1>
+                <div class="divider"></div>
+            </div>
+            <h:form>
+                <div class="input-field col s6">
+                    <h:outputLabel value="Username" for="userName"/>
+                    <b:inputText value="#{login.userName}" id="userName"
+                                 validatorMessage="Please name must have between 4 and 16 characters"
+                                 required="true"
+                                 requiredMessage="User name cannot be blank">
+                        <f:validateLength minimum="4" maximum="16" for="userName"/>
+                    </b:inputText>
+                </div>
+                <div class="input-field col s6">
+                    <h:outputLabel value="Password" for="password"/>
+                    <b:inputSecret value="#{login.password}" id="password"
+                                   validatorMessage="Please password must have between 4 and 16 characters"
+                                   required="true"
+                                   requiredMessage="Password cannot be blank">
+                        <f:validateLength minimum="4" maximum="16" for="password"/>
+                    </b:inputSecret>
+                </div>
+
+                <div class="space-top text-center">
+                    <b:commandButton id="loginButton"
+                                     value="Login"
+                                     action="#{login.doValidateInput}"/>
+                </div>
+            </h:form>
+        </div>
+    </div>
+</div>
+</body>
 </html>

@@ -15,30 +15,54 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="application/javascript"/>
-
+    <link href="css/login.css" rel="stylesheet"/>
 </head>
 
-
-
-<f:view>
-    <h:form>
-        <h:outputLabel value="Nombre" for="firstName"/>
-        <b:inputText value="#{peopleBean.firstName}" id="firstName"/>
-        <h:outputLabel value="Apellido Paterno" for="lastNameP"/>
-        <b:inputText value="#{peopleBean.lastNameF}" id="lastNameP"/>
-        <h:outputLabel value="Apellido Materno" for="lastNameM"/>
-        <b:inputText value="#{peopleBean.lastNameM}" id="lastNameM"/>
-        <h:outputLabel value="Pais" for="country"/>
-        <b:inputText value="#{peopleBean.country}" id="country"/>
-        <h:outputLabel value="Correo Electronico" for="email"/>
-        <b:inputText value="#{peopleBean.email}" id="email"/>
-        <h:outputLabel value="Nombre de Usuario" for="username"/>
-        <b:inputText value="#{peopleBean.userName}" id="username"/>
-        <h:outputLabel value="Contraseña" for="password"/>
-        <b:inputSecret value="#{peopleBean.password}" id="password"/>
-        <b:commandButton id="registroButton"
-                         value="Registrar"
-                         action="#{peopleBean.createPerson}"/>
-    </h:form>
-</f:view>
+<body>
+<div class="container">
+    <div id="signup">
+        <div class="signup-screen">
+            <div class="space-bot text-center">
+                <h1>REGISTRO USUARIO</h1>
+                <div class="divider"></div>
+            </div>
+            <h:form>
+                <div class="input-field col s6">
+                    <h:outputLabel value="Nombre" for="firstName"/>
+                    <b:inputText value="#{peopleBean.firstName}" id="firstName"/>
+                </div>
+                <div class="input-field col s6">
+                    <h:outputLabel value="Apellido Paterno" for="lastNameP"/>
+                    <b:inputText value="#{peopleBean.lastNameF}" id="lastNameP"/>
+                </div>
+                <div class="input-field col s6">
+                    <h:outputLabel value="Apellido Materno" for="lastNameM"/>
+                    <b:inputText value="#{peopleBean.lastNameM}" id="lastNameM"/>
+                </div>
+                <div class="input-field col s6">
+                    <h:outputLabel value="Pais" for="country"/>
+                    <b:inputText value="#{peopleBean.country}" id="country"/>
+                </div>
+                <div class="input-field col s6">
+                    <h:outputLabel value="Correo Electronico" for="email"/>
+                    <b:inputText value="#{peopleBean.email}" id="email"/>
+                </div>
+                <div class="input-field col s6">
+                    <h:outputLabel value="Nombre de Usuario" for="username"/>
+                    <b:inputText value="#{peopleBean.userName}" id="username"/>
+                </div>
+                <div class="input-field col s6">
+                    <h:outputLabel value="Contraseña" for="password"/>
+                    <b:inputSecret value="#{peopleBean.password}" id="password"/>
+                </div>
+                <div class="space-top text-center">
+                    <b:commandButton id="registroButton"
+                                     value="Registrar"
+                                     action="#{peopleBean.createPerson}"/>
+                </div>
+            </h:form>
+        </div>
+    </div>
+</div>
+</body>
 </html>
