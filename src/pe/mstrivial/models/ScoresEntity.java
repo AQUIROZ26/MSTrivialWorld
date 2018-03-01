@@ -7,10 +7,10 @@ import java.util.List;
 
 public class ScoresEntity extends BaseEntity {
     private static String DEFAULT_SQL = "SELECT * FROM trivial_world.scores";
+
     private List<Score> findByCriteria(String sql, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
-        List<Score> scores;
+        List<Score> scores = new ArrayList<>();
         if (getConnection() != null) {
-            scores = new ArrayList<>();
             try {
                 ResultSet resultSet = getConnection()
                         .createStatement()
@@ -18,11 +18,10 @@ public class ScoresEntity extends BaseEntity {
                 while (resultSet.next()) {
                     Score score = new Score(
                             resultSet.getInt("id"),
-                            peopleEntity.findById(resultSet.getInt("player_id"), companiesEntity),
-                            resultSet.getInt("victories"),
-                            resultSet.getInt("defeats"),
-                            resultSet.getDate("create_date"),
-                            resultSet.getDate("modify_create"));
+                            resultSet.getInt("victory"),
+                            resultSet.getInt("defeat"),
+                            resultSet.getInt("point"),
+                            peopleEntity.findById(resultSet.getInt("player_id"),companiesEntity));
                     scores.add(score);
                 }
                 return scores;
@@ -42,26 +41,32 @@ public class ScoresEntity extends BaseEntity {
     public Score findById(int id, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
                 " WHERE id = " + String.valueOf(id), peopleEntity, companiesEntity);
-        return (scores != null ? scores.get(0) : null);
+        return (scores != null && scores.isEmpty() ? scores.get(0) : null);
     }
 
-    public Score findByPersonEntity(int PersonEntity, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
+    public Score findByPersonId (int personId, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE player_id = '" + peopleEntity + "'", peopleEntity, companiesEntity);
-        return (scores != null ? scores.get(0) : null);
+                " WHERE player_id = " +personId,peopleEntity, companiesEntity);
+        return (scores != null && scores.isEmpty() ? scores.get(0) : null);
     }
 
 
     public Score findByVictory(int victory, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE victory = '" + victory + "'", peopleEntity, companiesEntity);
-        return (scores != null ? scores.get(0) : null);
+                " WHERE victory = " + victory, peopleEntity, companiesEntity);
+        return (scores != null && scores.isEmpty() ? scores.get(0) : null);
     }
 
     public Score findByDefeat(int defeat, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
         List<Score> scores = findByCriteria(DEFAULT_SQL +
-                " WHERE defeat = '" + defeat + "'", peopleEntity, companiesEntity );
-        return (scores != null ? scores.get(0) : null);
+                " WHERE defeat = " + defeat, peopleEntity, companiesEntity );
+        return (scores != null && scores.isEmpty() ? scores.get(0) : null);
+    }
+
+    public Score findByPoint(int point, PeopleEntity peopleEntity, CompaniesEntity companiesEntity){
+        List<Score> scores= findByCriteria(DEFAULT_SQL+
+                " WHERE point= "+point,peopleEntity,companiesEntity);
+        return (scores != null && scores.isEmpty() ? scores.get(0) : null);
     }
 
 
@@ -94,5 +99,40 @@ public class ScoresEntity extends BaseEntity {
         }
         return 0;
     }
+
+    public Score create(int victory, int defeat, int point, Person person, PeopleEntity peopleEntity, CompaniesEntity companiesEntity){
+        if(findByVictory(victory,peopleEntity,companiesEntity)== null &&
+                findByDefeat(defeat,peopleEntity,companiesEntity)== null &&
+                findByPoint(point,peopleEntity,companiesEntity)== null){
+            if(getConnection() != null){
+                String sql="INSERT INTO scores (id, victory, defeat, point, player_id) VALUES ("+
+                        String.valueOf(getMaxId()+1)+", "
+                        +victory+", "
+                        +point+", "
+                        +defeat+", "
+                        +person+")";
+                int results = updateByCriteria(sql);
+                if(results>0){
+                    Score score = new Score(getMaxId(),victory,defeat, point,person);
+                    return score;
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean update(Score score, PeopleEntity peopleEntity, CompaniesEntity companiesEntity) {
+        if(findByVictory(score.getVictory(), peopleEntity, companiesEntity) !=null &&
+                findByDefeat(score.getDefeat(),peopleEntity, companiesEntity) != null &&
+                findByPoint(score.getPoint(),peopleEntity, companiesEntity) != null) return false;
+                return updateByCriteria(
+                "UPDATE scores SET " +
+                        "victory= " +score.getVictory()+ ", " +
+                        "defeat="+score.getDefeat()+", "+
+                        "point" +score.getPoint()+ ", " +
+                        "player_id=" + score.getPerson()+
+                        " WHERE id= " + String.valueOf(score.getId())) > 0;
+    }
+
 
 }

@@ -1,28 +1,23 @@
 package pe.mstrivial.models;
 
-import java.util.Date;
 
 public class Score {
 
     private int id;
-    private Person person;
     private int victory;
     private int defeat;
-    private Date createDate;
-    private Date modifyDate;
-
-    public Score(int id, Person person, int victory, int defeat, Date createDate, Date modifyDate) {
-        this.id = id;
-        this.person = person;
-        this.victory = victory;
-        this.defeat = defeat;
-        this.createDate = createDate;
-        this.modifyDate = modifyDate;
-    }
-
-
+    private int point;
+    private Person person;
 
     public Score() {
+    }
+
+    public Score(int id, int victory, int defeat, int point, Person person) {
+        this.id = id;
+        this.victory = victory;
+        this.defeat = defeat;
+        this.point = point;
+        this.person = person;
     }
 
 
@@ -32,16 +27,6 @@ public class Score {
 
     public Score setId(int id) {
         this.id = id;
-        return this;
-    }
-
-    public Person getPerson() {
-
-        return person;
-    }
-
-    public Score setPerson(Person person) {
-        this.person = person;
         return this;
     }
 
@@ -63,21 +48,22 @@ public class Score {
         return this;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public int getPoint() {
+        return point;
     }
 
-    public Score setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public Score setPoint(int point) {
+        this.point = point;
         return this;
     }
 
-    public Date getModifyDate() {
-        return modifyDate;
+    public Person getPerson() {
+        return person;
     }
 
-    public Score setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
+    public Score setPerson(Person person) {
+        this.person = person;
         return this;
     }
+
 }
