@@ -12,6 +12,7 @@ public class TwService {
     private Connection connection;
     private CompaniesEntity companiesEntity;
     private PeopleEntity peopleEntity;
+    private ScoresEntity scoresEntity;
 
     private Connection getConnection() {
         if(connection == null) {
@@ -50,16 +51,32 @@ public class TwService {
         return peopleEntity;
     }
 
+    protected  ScoresEntity getScoresEntity(){
+        if(getConnection() != null){
+            if(scoresEntity == null){
+                scoresEntity = new ScoresEntity();
+                scoresEntity.setConnection(getConnection());
+            }
+        }
+        return scoresEntity;
+    }
+
+
     public List<Person> findAllPeople() {
         return (getPeopleEntity() != null &&
                 getCompaniesEntity() != null) ?
                 getPeopleEntity().findAll(getCompaniesEntity()) : null;
 
     }
-
     public List<Company> findAllCompanies() {
+
         return getCompaniesEntity() != null ?
                 getCompaniesEntity().findAll() : null;
+    }
+
+    public List<Score> findAllScores(){
+        return getScoresEntity() != null ?
+                getScoresEntity().findAll(getPeopleEntity(),getCompaniesEntity()) : null;
     }
     public Company findCompanyById(int id) {
         return getCompaniesEntity() != null ?
@@ -70,6 +87,12 @@ public class TwService {
         return getCompaniesEntity() != null ?
                 getCompaniesEntity().findByName(name) : null;
     }
+
+    public Company findPersonById(int id) {
+        return getPeopleEntity() != null ?
+                getCompaniesEntity().findById(id) : null;
+    }
+
 
     public Company createCompany(String name, String ruc) {
         return getCompaniesEntity() != null ?
@@ -102,4 +125,16 @@ public class TwService {
         return getPeopleEntity() != null ?
                 getPeopleEntity().update(person, companiesEntity) :false;
     }
+
+    public Score createScore (int victory, int defeat, int point, Person person,
+                              PeopleEntity peopleEntity, CategoriesEntity companiesEntity){
+        return getScoresEntity() != null ?
+                getScoresEntity().create(victory,defeat,point,person, peopleEntity, companiesEntity) :null;
+    }
+
+    public boolean updateScore (Score score, PeopleEntity peopleEntity, CategoriesEntity companiesEntity){
+        return getScoresEntity() != null ?
+                getScoresEntity().update(score,peopleEntity,companiesEntity):false;
+    }
+
 }

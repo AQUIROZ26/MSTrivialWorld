@@ -40,6 +40,14 @@ public class PeopleEntity extends BaseEntity{
 
     }
 
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     public List<Person> findAll(CompaniesEntity companiesEntity) {
         return findByCriteria(DEFAULT_SQL, companiesEntity);
     }
@@ -134,8 +142,15 @@ public class PeopleEntity extends BaseEntity{
             if(getConnection() != null) {
                 String sql = "INSERT INTO people (id, first_name, last_name_p, last_name_m, " +
                         "country, email, username, password, company_id) VALUES(" +
-                        String.valueOf(getMaxId() + 1) + ", '" + firstName + "', '"+lastNameF+"', '"+lastNameM+"', '" +
-                        country+"', '"+email+"', '"+userName+"', '"+password+"', "+company+")";
+                        String.valueOf(getMaxId() + 1) + ", '"
+                        +firstName + "', '"
+                        +lastNameF+"', '"
+                        +lastNameM+"', '"
+                        +country+"', '"
+                        +email+"', '"
+                        +userName+"', '"
+                        +password+"', "
+                        +company+")";
                 int results = updateByCriteria(sql);
                 if(results > 0) {
                     Person person = new Person (getMaxId(), firstName, lastNameF, lastNameM, country, email,
@@ -151,29 +166,23 @@ public class PeopleEntity extends BaseEntity{
         if(findByFirstName(person.getFirstName(), companiesEntity) !=null &&
                 findByLastNameF(person.getLastNameF(),companiesEntity) != null &&
                 findByLastNameM(person.getLastNameM(),companiesEntity) != null &&
-                findByCountry(person.getCountry(),companiesEntity)!=null &&
                 findByEmail(person.getEmail(),companiesEntity) !=null &&
+                findByCountry(person.getCountry(),companiesEntity)!=null &&
                 findByUserName(person.getUserName(),companiesEntity) != null &&
                 findByPassword(person.getPassword(),companiesEntity) != null) return false;
         return updateByCriteria(
                 "UPDATE people SET " +
-                        "first_name= '" +person.getFirstName()+ "' ," +
-                        "last_name_p '= '"+person.getLastNameF()+"' "+
-                        "last_name_m '" +person.getLastNameM()+ "' ," +
-                        "email= '" + person.getEmail() + "' ," +
-                        "country= '" + person.getCountry() + "' ," +
-                        "username= '" + person.getUserName() + "' ," +
-                        "password= '" + person.getPassword() + "' ," +
-                        "company_id= '" + person.getCompany() + "' ," +
-                        " WHERE id= " + String.valueOf(person.getId())) > 0;
+                        "first_name  = '"+person.getFirstName()+ "', " +
+                        "last_name_p = '"+person.getLastNameF()+"', "+
+                        "last_name_m = '"+person.getLastNameM()+ "', " +
+                        "email = '" +person.getEmail() + "', " +
+                        "country = '" +person.getCountry() + "', " +
+                        "username =  '" +person.getUserName() + "', " +
+                        "password = '" +person.getPassword() + "', " +
+                        "company_id = '" + person.getCompany() +
+                        " WHERE id = " + String.valueOf(person.getId())) > 0;
     }
 
 
-    public Company getCompany() {
-        return company;
-    }
 
-    public void setCompany(Company company) {
-        this.company = company;
-    }
 }

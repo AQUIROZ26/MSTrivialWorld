@@ -3,7 +3,7 @@ package pe.mstrivial.models;
 
 
 import java.util.Date;
-
+//Se crea una clase Person con el diseño de patrón DAO para los detalles específicos del usuario.
 public class Person {
     private int id;
     private String firstName;
@@ -70,8 +70,9 @@ public class Person {
         return country;
     }
 
-    public void setCountry(String country) {
+    public Person setCountry(String country) {
         this.country = country;
+        return this;
     }
 
     public String getEmail() {
