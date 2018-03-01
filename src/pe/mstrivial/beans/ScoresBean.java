@@ -62,21 +62,21 @@ public class ScoresBean implements Serializable {
         return "success";
     }
 
-    public String createScore() {
+    /*public String createScore() {
         service.createScore(this.getVictory(), this.getDefeat(), this.getPoint(),
                 this.getPerson(), this.peopleEntity, this.categoriesEntity);
         return "success";
-    }
+    }*/
 
     public String editScore(Score Score) {
         this.setScore(score);
         return "success";
     }
 
-    public String updateScore() {
+    /*public String updateScore() {
         service.updateScore(this.getScore(), this.getPeopleEntity(), this.getCategoriesEntity());
         return "success";
-    }
+    }*/
 
 
     public Person getPerson() {

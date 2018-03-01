@@ -126,7 +126,7 @@ public class TwService {
                 getPeopleEntity().update(person, companiesEntity) :false;
     }
 
-    public Score createScore (int victory, int defeat, int point, Person person,
+    /*public Score createScore (int victory, int defeat, int point, Person person,
                               PeopleEntity peopleEntity, CategoriesEntity companiesEntity){
         return getScoresEntity() != null ?
                 getScoresEntity().create(victory,defeat,point,person, peopleEntity, companiesEntity) :null;
@@ -135,6 +135,6 @@ public class TwService {
     public boolean updateScore (Score score, PeopleEntity peopleEntity, CategoriesEntity companiesEntity){
         return getScoresEntity() != null ?
                 getScoresEntity().update(score,peopleEntity,companiesEntity):false;
-    }
+    }*/
 
 }
