@@ -1,47 +1,25 @@
+
 html,body {
     height: 100%;
     width: 100%;
     margin: 0px;
     padding: 0px;
-    overflow: hidden;
+    position: relative;
+    display: block;
+
 }
+
+form{
+    display: block;
+}
+
 
 body {
     background-image: url('https://lukakva.github.io/NyanPong/resources/background.jpg');
 }
+html, head {
+    background-image: url('https://lukakva.github.io/NyanPong/resources/background.jpg');
 
-.cat {
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.cat:before {
-    content: "";
-    display: block;
-    height: 50px;
-    width: 50px;
-    background-image: url("https://lukakva.github.io/NyanPong/resources/Nyan-Cat.gif");
-    background-size: cover;
-    -webkit-transform: none;
-}
-
-.cat.right-down:before {
-    -webkit-transform: rotateZ(45deg);
-}
-
-.cat.right-up:before {
-    -webkit-transform: rotateZ(-45deg);
-}
-
-.cat.left-down:before {
-    -webkit-transform: rotateZ(135deg) rotateX(180deg);
-}
-
-.cat.left-up:before {
-    -webkit-transform: rotateZ(-135deg) rotateX(180deg);
 }
 
 
@@ -154,15 +132,6 @@ body {
     z-index: 0;
 }
 
-.exit {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    font-size: 30px;
-    color: white;
-    font-family: sans-serif;
-    cursor: pointer;
-}
 
 .container {
     width: 400px;
@@ -198,55 +167,3 @@ body {
     user-select: none;
 }
 
-.player-button:hover, .player-level:hover, .player-got-it:hover {
-    -webkit-transform: scale(1.05);
-}
-
-.player-button:active, .player-level:active, .player-got-it:active {
-    -webkit-transform: scale(0.95);
-}
-
-.levels, .controls {
-    display: none;
-}
-
-.player-control {
-    height: 50px;
-    width: 50px;
-    margin: 10px;
-    background: white;
-    box-shadow: 3px 3px rgb(202, 202, 202);
-    line-height: 50px;
-    font-size: 30px;
-    font-family: sans-serif;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.player-control:first-child:active {
-    box-shadow: none;
-    margin-top: 13px;
-    margin-right: -3px;
-    margin-bottom: -3px;
-    margin-left: 13px;
-}
-
-.player-control:not(:first-child):active {
-    box-shadow: none;
-    margin-top: 13px;
-    margin-right: 7px;
-    margin-bottom: 7px;
-    margin-left: 13px;
-}
-
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-}
-
-.center {
-    float: none;
-}
