@@ -4,36 +4,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:href="http://java.sun.com/jsf/html">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
+<h:head>
 
-<f:view>
-    <h:form>
-        <h:outputLabel value="Trivias 1/10"/>
-        <br></br>
-        <br></br>
-        <h1>
-            <h:outputLabel value="00:00:34"/>
-        </h1>
-        <br></br>
-        <h:outputLabel value="¿Que ojo pierde el personaje conocido como El Gobernador en The Walking Dead?"/>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br>1. El Izquierdo</br>
-        <br>2. El derecho</br>
-        <br>3. Los dos</br>
-        <br>4. No pierde ninguno</br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h:commandButton value="atras" action="sala"/>
-        <h:commandButton value="adelante" action="triviaSerieTwoQuestion"/>
-        <hr></hr>
-        <a title="CIBERTEC" href="https://www.cibertec.edu.pe/" target="_blank"><img src="imagenes/cibertec.jpg" alt="CIBERTEC" width="150" height="150"/></a>
-        <a title="ICPNA" href="https://www.icpna.edu.pe/" target="_blank"><img src="imagenes/icpna.jpg" alt="ICPNA" width="150" height="150"/></a>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
-    </h:form>
-</f:view>
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="application/javascript"/>
+
+    <link href="css/estilos.css" rel="stylesheet"/>
+
+
+</h:head>
+
+<h:body class="make-flex">
+    <h2>Trivias 1/10</h2>
+
+    <h3>¿Que ojo pierde el personaje conocido como El Gobernador en The Walking Dead?</h3><td></td>>
+    <a title="CIBERTEC" href="https://www.cibertec.edu.pe/" target="_blank"><img src="imagenes/cibertec.jpg" alt="CIBERTEC" width="100" height="100"/></a>
+    <a title="ICPNA" href="https://www.icpna.edu.pe/" target="_blank"><img src="imagenes/icpna.jpg" alt="ICPNA" width="100" height="100"/></a>
+
+    <div class="container twidth make-flex">
+        <p id="question"></p>
+        <div class="optnContainer make-flex">
+            <p id="Izquierdo" class="answer">Izquierdo</p>
+            <p id="Derecho" class="answer">Derecho</p>
+            <p id="Los dos" class="answer">Los dos</p>
+            <p id="No pierde ninguno" class="answer">No pierde ninguno</p>
+            <div id="waiting"></div>
+            <div id="waitanim"></div>
+        </div>
+    </div>
+    <div class="score twidth make-flex">
+        <p id="hscore">0</p>
+
+    </div>
+    <p  id="skip" class="twidth">adelante</p>
+    <small></small>
+
+</h:body>
+
+
 </html>

@@ -4,34 +4,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:form>
-        <h:outputLabel value="Trivias 1/10"/>
-        <br></br>
-        <br></br>
-        <h1>
-            <h:outputLabel value="00:00:34"/>
-        </h1>
-        <br></br>
-        <h:outputLabel value="¿En que año Chili Peper estuvo de gira en Japon?"/>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br>1. 1992</br>
-        <br>2. 1989</br>
-        <br>3. 1998</br>
-        <br>4. 1995</br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h:commandButton value="atras" action="sala"/>
-        <h:commandButton value="adelante" action="triviaMusicTwoQuestion"/>
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
+<h:head>
 
-        <a title="BCP" href="https://www.viabcp.com" target="_blank"><img src="imagenes/BCP.jpg" alt="BCP" width="150" height="150"/></a>
-        <a title="BRITANICO" href="https://www.britanico.edu.pe/" target="_blank"><img src="imagenes/britanico.jpg" alt="BRITANICO" width="150" height="150"/></a>
-    </h:form>
-</f:view>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="application/javascript"/>
+
+    <link href="css/estilos.css" rel="stylesheet"/>
+
+
+</h:head>
+
+<h:body class="make-flex">
+    <h2>Trivias 1/10</h2>
+
+    <h3>¿Que ojo pierde el personaje conocido como El Gobernador en The Walking Dead?</h3><td></td>>
+    <a title="BCP" href="https://www.viabcp.com" target="_blank"><img src="imagenes/BCP.jpg" alt="BCP" width="150" height="150"/></a>
+    <a title="BRITANICO" href="https://www.britanico.edu.pe/" target="_blank"><img src="imagenes/britanico.jpg" alt="BRITANICO" width="150" height="150"/></a>
+
+    <div class="container twidth make-flex">
+        <p id="question"></p>
+        <div class="optnContainer make-flex">
+            <p id="Izquierdo" class="answer">Izquierdo</p>
+            <p id="Derecho" class="answer">Derecho</p>
+            <p id="Los dos" class="answer">Los dos</p>
+            <p id="No pierde ninguno" class="answer">No pierde ninguno</p>
+            <div id="waiting"></div>
+            <div id="waitanim"></div>
+        </div>
+    </div>
+    <div class="score twidth make-flex">
+        <p id="hscore">0</p>
+
+    </div>
+    <p  id="skip" class="twidth">adelante</p>
+    <small></small>
+
+</h:body>
+
+
 </html>
-
