@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
-<head>
+<h:head>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
@@ -15,14 +15,21 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="application/javascript"/>
-
-</head>
-<f:view>
+</h:head>
+<h:head>
+    <b:navBar>
+        <b:navbarLinks>
+            <b:navLink value="Perfil" href="perfilUsuario.xhtml"></b:navLink>
+            <b:navLink value="Ranking" href="ranking.xhtml"></b:navLink>
+            <b:navLink value="Categoria" href="category.xhtml"></b:navLink>
+            <b:navLink value="Cerrar Session" href="index.xhtml"></b:navLink>
+        </b:navbarLinks>
+    </b:navBar>
     <h:outputLabel value=""/>
     <h:form>
         <b:commandButton  value="Musica" action="salaMusic" />
 
         <b:commandButton value="Serie" action="salaSerie"/>
     </h:form>
-</f:view>
+</h:head>
 </html>

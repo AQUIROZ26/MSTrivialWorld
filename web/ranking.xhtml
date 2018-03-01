@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            type="application/javascript"/>
+
+</h:head>
+<h:head>
+    <b:navBar>
+        <b:navbarLinks>
+            <b:navLink value="Perfil" href="perfilUsuario.xhtml"></b:navLink>
+            <b:navLink value="Ranking" href="ranking.xhtml"></b:navLink>
+            <b:navLink value="Categoria" href="category.xhtml"></b:navLink>
+            <b:navLink value="Cerrar Session" href="index.xhtml"></b:navLink>
+        </b:navbarLinks>
+    </b:navBar>
+    <b:image name="test" value="imagenes/logo trivia.jpg"/>
+    <br></br>
+    <h:outputLabel value="Nombre:  #{peopleBean.firstName} "/>
+    <br></br>
+    <h:outputLabel value="Pais: #{peopleBean.country}"/>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <b:dataTable value="" var="campos">
+        <b:dataTableColumn>
+            <f:facet name="header">Mi Score</f:facet>
+            Puntajes Totales                750        puntos
+            <br></br>
+            Mejor Puntaje x Duelo          1,523       puntos
+            <br></br>
+            Mejor Puntaje x Pregunta        4652       puntos
+            <br></br>
+            Total Puntaje de Serie          458        Puntos
+        </b:dataTableColumn>
+    </b:dataTable>
+    <br></br>
+    <br></br>
+    <b:dataTable value="" var="campos">
+        <b:dataTableColumn>
+            <f:facet name="header">Ranking Usuarios</f:facet>
+            1.- Luis Gonzales Rivera       1,5264   Punto
+            <br></br>
+            2.- Ana Quiroga Milo           1,1010   Puntos
+            <br></br>
+            3.- Karmen Rojas Vales           9587   Puntos
+            <br></br>
+            4.- Pamela Carmen Luna            947   Puntos
+        </b:dataTableColumn>
+    </b:dataTable>
+    <br></br>
+    <br></br>
+    <b:dataTable value="" var="campos">
+        <b:dataTableColumn>
+            <f:facet name="header">Mis Duelos</f:facet>
+            Total de Victorias                 50
+            <br></br>
+            Total de Derrotas                  23
+            <br></br>
+            Total de Duelos                    73
+        </b:dataTableColumn>
+    </b:dataTable>
+</h:head>
+</html>

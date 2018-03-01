@@ -22,18 +22,19 @@
 <h:head>
     <b:navBar>
         <b:navbarLinks>
-            <b:navLink value="Home" href="#"></b:navLink>
-            <b:navLink value="Jugar" href="#"></b:navLink>
-            <b:navLink value="Clasificacion" href="#"></b:navLink>
-            <b:navLink value="fdd" href="#"></b:navLink>
+            <b:navLink value="Perfil" href="perfilUsuario.xhtml"></b:navLink>
+            <b:navLink value="Ranking" href="ranking.xhtml"></b:navLink>
+            <b:navLink value="Categoria" href="category.xhtml"></b:navLink>
+            <b:navLink value="Cerrar Session" href="index.xhtml"></b:navLink>
         </b:navbarLinks>
     </b:navBar>
     <b:image name="test" value="imagenes/logo trivia.jpg"/>
+    <br></br>
     <h:outputLabel value="Nombre:  #{peopleBean.firstName} "/>
     <br></br>
-    <h:outputLabel value="Puntos: #{peopleBean.userName}"/>
+    <h:outputLabel value="Puntos: 1324"/> <td></td><td></td><h:commandButton value="CREAR JUEGO" action="#{triviaMusicOneQuestion}"/>
     <br></br>
     <br></br>
-    <h:commandButton value="JUGAR" action="#{triviaMusicOneQuestion}"/>
+
 </h:head>
 </html>
