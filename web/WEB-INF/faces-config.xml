@@ -17,6 +17,7 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
+            <from-action>#{peopleBean.newPerson}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/newPerson.xhtml</to-view-id>
         </navigation-case>
@@ -25,6 +26,7 @@
     <navigation-rule>
         <from-view-id>/newPerson.xhtml</from-view-id>
         <navigation-case>
+            <from-action>#{peopleBean.createPerson}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
@@ -47,15 +49,9 @@
     <navigation-rule>
         <from-view-id>/editPerson.xhtml</from-view-id>
         <navigation-case>
+            <from-action>#{peopleBean.updatePerson(person)}</from-action>
             <from-outcome>sucess</from-outcome>
             <to-view-id>/perfilUsuario.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/perfilUsuario.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>success</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>

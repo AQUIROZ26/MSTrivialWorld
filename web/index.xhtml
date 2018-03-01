@@ -13,18 +13,24 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
 
     <!-- Latest compiled and minified JavaScript -->
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="application/javascript"/>
+    <link href="css/index.css" rel="stylesheet"/>
+
 </head>
+
 <f:view>
 
     <h:outputLabel value=""/>
     <h:form>
+
+
+
         <b:image name="test" value="imagenes/logo trivia.jpg"/>
         <br></br>
         <br></br>
         <br></br>
-        <b:commandButton  value="REGISTRO" action="newPerson" />
-<td></td>
+       <a> <b:commandButton  value="REGISTRO" action="#{peopleBean.newPerson}" /></a>
         <td></td>
         <td></td>
         <td></td>
@@ -32,21 +38,16 @@
         <td></td>
         <td></td>
         <td></td>
-        <b:commandButton value="INICIO SESION" action="login"/>
-        <br></br>
-        <br></br>
-        <a title="UTP" href="https://www.utp.edu.pe" target="_blank"><img src="imagenes/utp_logo.jpg" alt="UTP" width="150" height="150" /></a>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <a title="UTP" href="https://www.bbvacontinental.pe" target="_blank"><img src="imagenes/logo_bbva.jpg" alt="UTP" width="150" height="150"/></a>
+
+     <a>  <b:commandButton value="INICIO SESION" action="login"/></a>
+
+        <p><a title="UTP" href="https://www.utp.edu.pe" target="_blank"><img src="imagenes/utp_logo.jpg" alt="UTP" width="100" height="100" /></a></p>
+
+       <p><a title="BBVA" href="https://www.bbvacontinental.pe" target="_blank"><img src="imagenes/logo_bbva.jpg" alt="BBVA" width="80" height="100"/></a></p>
 
     </h:form>
 </f:view>
+
+
 </html>
 
